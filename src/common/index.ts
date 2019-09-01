@@ -5,9 +5,9 @@ import fs from 'fs'
 import util from 'util'
 import assert from 'assert'
 
-import propositionalLogic from '../propositional-logic'
+// import propositionalLogic from '../propositional-logic'
 
 export { 
   R, S, path, fs, util, assert,
-  propositionalLogic as logic,
+  // propositionalLogic as logic,
 }

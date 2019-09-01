@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/index.ts --extensions '.ts'",
+    "start": "nodemon --exec babel-node src/sets/theorems/index.ts --extensions '.ts'",
     "build": "npx babel src/index.ts --extensions '.ts' --out-dir dist",
     "check-types": "tsc --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint src/sets --ext .ts"
   },
   "keywords": [],
   "author": "",
@@ -24,10 +25,13 @@
     "@babel/plugin-proposal-pipeline-operator": "^7.5.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-typescript": "^7.3.3",
+    "babel-eslint": "^10.0.3",
     "babel-plugin-macros": "^2.6.1",
     "babel-plugin-operator-overload": "^2.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "eslint": "^6.3.0",
     "nodemon": "^1.19.1",
+    "typedoc": "^0.15.0",
     "typescript": "^3.6.2"
   }
 }
