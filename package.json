@@ -1,0 +1,33 @@
+{
+  "name": "provio",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/index.ts --extensions '.ts'",
+    "build": "npx babel src/index.ts --extensions '.ts' --out-dir dist",
+    "check-types": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/plugin-proposal-pipeline-operator": "^7.5.0",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "babel-plugin-macros": "^2.6.1",
+    "babel-plugin-operator-overload": "^2.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "nodemon": "^1.19.1",
+    "typescript": "^3.6.2"
+  }
+}
