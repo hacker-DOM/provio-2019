@@ -1,17 +1,13 @@
 import {R,S,util} from '../../common'
 import * as T from '../types'
-
-// class _Theorem {
-// }
-
-// const _theorem = new _Theorem()
+import * as H from '../helpers'
 
 const x = T._var
 const y = T._var
 const z = T._var
 
 /* eslint-disable indent*/
-// ZF1
+// ZF1: Axiom of extensionality
 const ZF1 = 
 T._forAll (x)
   (T._forAll (y)
@@ -26,7 +22,7 @@ T._forAll (x)
     )
   )
 
-// ZF2
+// ZF2: Null set axiom
 const ZF2 = 
 T._exists (x)
   (T._forAll (y)
@@ -37,3 +33,15 @@ T._exists (x)
 
 ZF1 |> console.log
 ZF2 |> console.log
+
+// There exists a unique set having no elements
+const S1 =
+H._existsUnique (x)
+  (H._isEmpty (x))
+
+const P1 = 
+T._implies
+  (ZF2)
+  ()
+  
+const T1 = T._theorem (S1) (P1)
