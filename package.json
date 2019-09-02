@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/sets/theorems/index.ts --extensions '.ts'",
+    "start": "nodemon --exec babel-node src/sets/axioms/index.ts --extensions '.ts'",
     "build": "npx babel src --extensions '.ts' --out-dir dist",
     "check-types": "tsc --watch",
     "lint": "npx eslint src/ --ext .ts",
