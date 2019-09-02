@@ -1,6 +1,6 @@
 import {R,S,util} from '../../common'
 import * as T from '../types'
-import * as H from '../helpers'
+// import * as H from '../helpers'
 
 const x = T._var
 const y = T._var
@@ -35,13 +35,13 @@ ZF1 |> console.log
 ZF2 |> console.log
 
 // There exists a unique set having no elements
-const S1 =
-H._existsUnique (x)
-  (H._isEmpty (x))
+// const S1 =
+// H._existsUnique (x)
+//   (H._isEmpty (x))
 
-const P1 = 
-T._implies
-  (ZF2)
-  ()
+// const P1 = 
+// T._implies
+//   (ZF2)
+//   ()
   
-const T1 = T._theorem (S1) (P1)
+// const T1 = T._theorem (S1) (P1)
