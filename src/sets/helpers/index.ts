@@ -1,4 +1,11 @@
 import * as P from '../../propositions/types'
 import * as Pr from '../../predicates/types'
+import * as T from '../types'
 
-// export const _existsUnique = x => P._and(Pr._exists(x), 
+bi('&&', P._and)
+bi('>>', P._implies)
+bi('===', T._equals)
+const ex = Pr._exists
+const all = Pr._forAll
+
+export const _existsUnique = x => y => z => (ex (x) (y)) && (all (z) (() >> z === x))
