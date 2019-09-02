@@ -6,8 +6,9 @@ import * as B from '../../basic/types'
 // export const H1 = x => y => T._implies (x)
 // (T._implies (y) (x))
 
-bi(">>", T._implies)
-un("!", T._not)
+bi('&&', T._and)
+bi('>>', T._implies)
+un('!', T._not)
 
 // H1
 export const H1 = x => y => x >> (y >> x)
@@ -18,6 +19,9 @@ export const H2 = x => y => z => (x >> (y >> z)) >> ((x >> y) >> (x >> z))
 // H3
 // export const H3 = x => y => (!y >> !x) >> (x >> y)
 export const H3 = x => y => (!y >> !x) >> (x >> y)
+
+// Modus Ponens
+export const MP = x => y => (x && (x >> y)) >> y
 
 const x = B._var()
 const y = B._var()
