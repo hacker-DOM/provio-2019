@@ -13,7 +13,8 @@ const UNARY_OPS = [
 ]
 
 const BINARY_OPS = [
-  `=`,
+  // `=` doesn't seem to work
+  // `=`,
   `+=`,
   `-=`,
   `*=`,

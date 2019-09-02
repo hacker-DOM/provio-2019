@@ -25,4 +25,4 @@ export const _forAll = x => y => new _ForAll(x, y)
 //   }
 // }
 
-export const _exists = x => y => P._not (_forAll (x)) (P._not(y))
+export const _exists = x => y => P._not (_forAll (x) (P._not (y)))

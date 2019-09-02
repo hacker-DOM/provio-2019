@@ -11,7 +11,7 @@ export const _nand = x => y => new _Nand(x, y)
 //   constructor(x: _Set): void {
 //     this.x = x
 //   }
-}
+// }
 
 // export const _not = x => new _Not(x)
 export const _not = x => _nand (x) (x)
