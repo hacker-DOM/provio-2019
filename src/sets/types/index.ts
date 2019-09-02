@@ -8,23 +8,6 @@ export const _set = () => new _Set()
 
 // export const _operation = () => new _Operation()
 
-export class _Nand {
-  constructor (x: _Set, y: _Set): void {
-    this.x = x
-    this.y = y
-  }
-}
-
-export const _nand = x => y => new _Nand(x, y)
-
-export class _Not {
-  constructor (x: _Set): void {
-    this.x = x
-  }
-}
-
-export const _not = x => new _Not(x)
-
 export class _In {
   constructor (x: _Set, y: _Set): void {
     this.x = x
@@ -60,30 +43,3 @@ export class _Equals {
 }
 
 export const _equals = x => y => new _Equals(x, y)
-
-export class _Equiv {
-  constructor (x: _Set, y: _Set): void {
-    this.x = x
-    this.y = y
-  }
-}
-
-export const _equiv = x => y => new _Equiv(x, y)
-
-// Variable
-export class _Var {
-  constructor (x: _Set): void {
-    this.x = x
-  }
-}
-
-export const _var = x => new _Var(x)
-
-export class _Theorem {
-  constructor (x, y) {
-    this.x = x
-    this.y = y
-  }
-}
-
-export const _theorem = x => y => new _Theorem(x, y)
