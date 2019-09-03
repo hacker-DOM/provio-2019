@@ -1,6 +1,6 @@
 import * as T from '../types'
-import * as R from '../../common'
-import { genCombinations } from '../../common/helpers'
+import * as H from '../helpers'
+import {R,S} from '../../common'
 
 const x = T._var()
 const y = T._var()
@@ -14,6 +14,48 @@ z.toString = () => `z`
 // y.toString() |> console.log
 // z.toString() |> console.log
 
+class _State {
+  #vars = []
+
+  get vars() {
+    return this.#vars
+  }
+
+  appentVar() {
+    // return R.append (el) (this.#vars)
+    const _var = T._var()
+    _var.id = this.#vars.length
+    this.#vars.push (_var)
+    return _var
+  }
+
+  #predicates = {}
+
+  get predicates() {
+    return this.#predicates
+  }
+
+  addPredicate (args, pr) {
+    const s = H.serialize (args)
+    this.#predicates[s].push (pr)
+  }
+
+  
+  #MP() {
+    
+  }
+}
+
+const _state = () => new _State()
+
+const state = _state()
+
+const x_1 = state.appentVar()
+const y_1 = state.appentVar()
+const z_1 = state.appentVar()
+
+H.serialize ([x_1, y_1, z_1]) |> console.log
+
 const sets = {}
 const know = new Map()
 
@@ -23,6 +65,6 @@ const know = new Map()
 
 // R.map (addToSets (sets)) ([x, y, z])
 
-genCombinations([`x`,`y`,`z`]) |> console.log
+// S.genCombinations([`x`,`y`,`z`])
 
 
