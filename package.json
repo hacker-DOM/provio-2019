@@ -9,12 +9,14 @@
     "check-types": "tsc --watch",
     "lint": "npx eslint src/ --ext .ts",
     "test": "npx mocha './dist/**/*.spec.js'",
-    "nodemon-test": "npx nodemon --exec 'npm test || true'"
+    "nodemon-test": "npx nodemon --exec 'npm test || true'",
+    "typedoc": "typedoc --out docs src"
   },
   "keywords": [],
   "author": "",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "bitset": "^5.0.5",
     "ramda": "^0.26.1"
   },
   "devDependencies": {
