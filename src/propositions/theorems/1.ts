@@ -11,8 +11,6 @@ const proof = (state: B._State) => {
   const x = state.addVar()
   state.proposition = proposition
 }
+const name = `x => x`
 
-export default {
-  proposition,
-  proof
-}
+export default B._theorem (name) (proposition) (proof)

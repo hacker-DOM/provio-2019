@@ -24,7 +24,7 @@ describe (`Theorems`, function () {
   // Object.keys(require('module')._cache) |> console.log
 
   R.mapObjIndexed (({default: val}, key) => {
-    it (`verifying proof of ${key}`, function () {
+    it (`verifying proof of ${key}: ${val.name}`, function () {
       const state = A._state()
       val.proof(state)
       const x = B._var()

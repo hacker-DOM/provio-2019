@@ -8,13 +8,14 @@ export class _Var {
 export const _var = () => new _Var()
 
 export class _Theorem {
-  constructor (x, y) {
-    this.x = x
-    this.y = y
+  constructor (name, proposition, proof) {
+    this.name = name
+    this.proposition = proposition
+    this.proof = proof
   }
 }
 
-export const _theorem = x => y => new _Theorem(x, y)
+export const _theorem = name => proposition => proof => new _Theorem(name, proposition, proof)
 
 export class _State {
   #vars = []
