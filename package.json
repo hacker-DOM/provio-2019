@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/index.ts --extensions '.ts'",
+    "start": "npx nodemon --exec babel-node src/index.ts --extensions '.ts'",
     "build": "npx babel src --extensions '.ts' --out-dir dist",
-    "check-types": "tsc --watch",
+    "check-types": "npx tsc --watch",
     "lint": "npx eslint src/ --ext .ts",
     "test": "npx mocha './dist/**/*.spec.js'",
     "nodemon-test": "npx nodemon --exec 'npm test || true'",
-    "typedoc": "typedoc --out docs src"
+    "jsdoc": "npx jsdoc -c jsdoc.js"
   },
   "keywords": [],
   "author": "",
@@ -35,6 +35,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "eslint": "^6.3.0",
     "husky": "^3.0.5",
+    "jsdoc": "^3.6.3",
     "mocha": "^6.2.0",
     "nodemon": "^1.19.1",
     "typedoc": "^0.15.0",

@@ -8,6 +8,8 @@ export const debug = item => {
 
 export const mapIndexed = R.addIndex (R.map)
 
-/** The sweet and fleshy product of a tree or other plant. */
-// export const generateCombinations = 
+/** 
+ * The sweet and fleshy product of a tree or other plant. 
+ */
+export const generateCombinations = () => {}
 
