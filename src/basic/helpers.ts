@@ -1,4 +1,4 @@
-import {R} from '../../common'
+import {R} from '../common'
 
 export const serialize = R.pipe (
   R.sortBy (R.prop (`id`)),

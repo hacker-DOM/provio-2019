@@ -1,6 +1,6 @@
-import {R,S,util} from '../../common'
-import * as T from '../types'
-import * as B from '../../basic/types'
+import {R,S,util} from '../common'
+import * as T from './types'
+import * as B from '../basic/types'
 // import * as H from '../helpers'
 
 // export const H1 = x => y => T._implies (x)

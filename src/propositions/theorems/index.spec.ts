@@ -3,7 +3,7 @@
 import {assert,S,R} from '../../common'
 import * as B from '../../basic/types'
 import * as A from '../axioms'
-import Theorem from './index'
+import Theorem from './1'
 
 describe (`Thereoms`, function () {
   describe (`A == A`, function () {

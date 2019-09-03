@@ -1,6 +1,6 @@
-import * as P from '../../propositions/types'
-import * as Pr from '../../predicates/types'
-import * as T from '../types'
+import * as P from '../propositions/types'
+import * as Pr from '../predicates/types'
+import * as T from './types'
 
 bi('&&', P._and)
 bi('>>', P._implies)

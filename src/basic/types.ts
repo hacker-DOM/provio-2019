@@ -1,5 +1,5 @@
-import * as BH from '../../basic/helpers'
-import {R,util} from '../../common'
+import * as BH from './helpers'
+import {R,util} from '../common'
 
 // Variable
 export class _Var {

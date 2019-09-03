@@ -1,8 +1,8 @@
-import {R,S,util} from '../../common'
-import * as B from '../../basic/types'
-import * as P from '../../propositions/types'
-import * as Pr from '../../predicates/types'
-import * as T from '../types'
+import {R,S,util} from '../common'
+import * as B from '../basic/types'
+import * as P from '../propositions/types'
+import * as Pr from '../predicates/types'
+import * as T from './types'
 // import * as H from '../helpers'
 
 const x = B._var()

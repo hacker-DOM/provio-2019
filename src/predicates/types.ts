@@ -7,9 +7,9 @@
 // 6. the quantifiers $\forall$ and $\exists$
 // 7. parens
 
-import * as P from '../../propositions/types'
+import * as P from '../propositions/types'
 
-import {R} from '../../common'
+import {R} from '../common'
 
 export class _ForAll {
   constructor (x: _Set, y: _Set): void {
