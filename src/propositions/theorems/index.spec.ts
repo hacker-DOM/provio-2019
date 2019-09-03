@@ -7,21 +7,13 @@ import registerRequireContextHook from 'babel-plugin-require-context-hook/regist
 registerRequireContextHook()
 
 describe (`Theorems`, function () {
-  // const importAll = (r) => {
-  //   r.keys().forEach(r)
-  // }
-  const r = require.context(`.`, false, /\d+.js$/)
-  
+  const req = require.context(`.`, false, /\d+.js$/)
   const cache = {}
-  
-  importAll(r)
-  function importAll (r) {
-    r.keys().forEach(key => cache[key] = r(key));
+  const importAll = req => {
+    req.keys().forEach(key => cache[key] = req(key));
   }
+  importAll(req)
 
-  cache |> console.log
-
-  // Object.keys(require('module')._cache) |> console.log
 
   R.mapObjIndexed (({default: val}, key) => {
     it (`verifying proof of ${key}: ${val.name}`, function () {
