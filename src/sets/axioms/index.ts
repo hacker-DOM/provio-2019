@@ -45,7 +45,11 @@ const ZF1 = x => y => all (x) (all (y) ((x === y) == (all (z) ((z in x) == (z in
 //   )
 
 // Null set axiom (There exists an empty set)
-const ZF2 = x => y => ex (x) (all (y) (!(x in y)))
+// const ZF2 = x => y => ex (x) (all (y) (!(x in y)))
+const ZF2 = state => {
+  R.append (B._var) (state.vars)
+  
+}
 
 ZF1 (x) (y) |> console.log
 ZF2 (x) (y) |> console.log

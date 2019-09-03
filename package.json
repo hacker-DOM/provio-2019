@@ -16,7 +16,6 @@
   "author": "",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
-    "bitset": "^5.0.5",
     "ramda": "^0.26.1"
   },
   "devDependencies": {

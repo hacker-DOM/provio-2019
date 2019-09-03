@@ -4,7 +4,6 @@ import path from 'path'
 import fs from 'fs'
 import util from 'util'
 import assert from 'assert'
-
 // import propositionalLogic from '../propositional-logic'
 
 export { 

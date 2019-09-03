@@ -8,4 +8,10 @@ bi('===', T._equals)
 const ex = Pr._exists
 const all = Pr._forAll
 
-export const _existsUnique = x => pr1 => z => (ex (x) (y)) && (all (z) (() >> z === x))
+// export const _existsUnique = x => y => z => (ex (x) (y)) && (all (z) ((z `satisfies` y) >> z === x))
+
+// export const _existsUnique = pr => (ex (pr)) && (all (z) (pr) >> z === )
+
+export const _existsUnique = x => y => z => {
+  
+}
