@@ -12,6 +12,4 @@ const all = Pr._forAll
 
 // export const _existsUnique = pr => (ex (pr)) && (all (z) (pr) >> z === )
 
-export const _existsUnique = x => y => z => {
-  
-}
+// export const _existsUnique = pr => 

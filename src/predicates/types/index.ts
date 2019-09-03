@@ -9,6 +9,8 @@
 
 import * as P from '../../propositions/types'
 
+import {R} from '../../common'
+
 export class _ForAll {
   constructor (x: _Set, y: _Set): void {
     this.x = x
@@ -16,7 +18,7 @@ export class _ForAll {
   }
 }
 
-export const _forAll = x => y => new _ForAll(x, y)
+export const _forAll = pr => new _ForAll (R.T, pr)
 
 // export class _Exists {
 //   constructor (x: _Set, y: _Set): void {
@@ -25,4 +27,4 @@ export const _forAll = x => y => new _ForAll(x, y)
 //   }
 // }
 
-export const _exists = x => y => P._not (_forAll (x) (P._not (y)))
+// export const _exists = x => y => P._not (_forAll (x) (P._not (y)))

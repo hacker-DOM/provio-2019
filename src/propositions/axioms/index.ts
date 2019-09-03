@@ -34,3 +34,15 @@ console.log(h2)
 const h3 = H3 (x) (y)
 
 console.log(h3)
+
+export const log = () => {}
+
+export const enhanceState = state => {
+  state.addAxiom(H1)
+  state.addAxiom(H2)
+  state.addAxiom(H3)
+  state.addInference(MP)
+  return state
+}
+
+export const _state = () => enhanceState (B._state())

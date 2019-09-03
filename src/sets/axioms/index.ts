@@ -33,7 +33,10 @@ const ex = Pr._exists
 //   )
 
 // ZF1: Axiom of extensionality
-const ZF1 = x => y => all (x) (all (y) ((x === y) == (all (z) ((z in x) == (z in y)))))
+// export const ZF1 = x => y => all (x) (all (y) ((x === y) == (all (z) ((z in x) == (z in y)))))
+export const ZF1 = state => {
+  state.addPr ([], all (x => all (y => ((x === y) == all (z => ((z in x) == (z in y)))))))
+}
 
 // ZF2: Null set axiom
 // const ZF2 = 
@@ -46,10 +49,19 @@ const ZF1 = x => y => all (x) (all (y) ((x === y) == (all (z) ((z in x) == (z in
 
 // Null set axiom (There exists an empty set)
 // const ZF2 = x => y => ex (x) (all (y) (!(x in y)))
-const ZF2 = state => {
-  R.append (B._var) (state.vars)
-  
+export const ZF2 = state => {
+  const x = state.addVar()
+  state.addPr ([x], y => !(x in y))
 }
 
-ZF1 (x) (y) |> console.log
-ZF2 (x) (y) |> console.log
+const state = B._state()
+
+state.addVar()
+state.addVar()
+
+// ZF1 (x) (y) |> console.log
+// ZF2 (x) (y) |> console.log
+ZF2 (state)
+
+// state.predicates |> util.inspect(#, {depth:3}) |> console.log
+// state.log()

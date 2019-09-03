@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "npx nodemon --exec babel-node src/index.ts --extensions '.ts'",
-    "build": "npx babel src --extensions '.ts' --out-dir dist",
+    "build": "rm -rf dist && npx babel src --extensions '.ts' --out-dir dist",
     "check-types": "npx tsc --watch",
     "lint": "npx eslint src/ --ext .ts",
-    "test": "npx mocha './dist/**/*.spec.js'",
+    "test": "npm run build && npx mocha './dist/**/*.spec.js'",
     "nodemon-test": "npx nodemon --exec 'npm test || true'",
     "jsdoc": "npx jsdoc -c jsdoc.js"
   },
