@@ -23,6 +23,19 @@ export const pushAndReturn = el => arr => {
   return el
 }
 
+/**
+ * @description TODO: Rewrite fp
+ * @example 
+ */
+export const uncurry = fn => args => {
+  let toReturn = fn (args[0])
+  for (let i = 1; i < args.length; i++) {
+    toReturn = toReturn (args[i])
+  }
+
+  return toReturn
+}
+
 /* Doesn't use babel to make it runnable with node */
 export const logEach = arr => {
   console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')

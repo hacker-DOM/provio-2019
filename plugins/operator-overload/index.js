@@ -1,29 +1,38 @@
 /* eslint-disable */
 const { UNARY, BINARY } = require('./operators')
 
-const UNARY_ALIAS = 'un'
-const BINARY_ALIAS = 'bi';
+const UNARY_OPERATOR_DEFINITION = 'un'
+const BINARY_OPERATOR_DEFINITION = 'bi';
 
-const is = (t, {expr}, OPS, ALIAS) => {
+const isUnary = (t, node) => {
   return t.isCallExpression(node.expression) &&
     t.isIdentifier(node.expression.callee) &&
-    node.expression.callee.name === ALIAS &&
+    node.expression.callee.name === UNARY_OPERATOR_DEFINITION &&
     node.expression.arguments[0] != null &&
     t.isLiteral(node.expression.arguments[0]) &&
-    node.expression.arguments[0].value in OPS;
+    node.expression.arguments[0].value in UNARY;
 }
 
 const isBinary = (t, node) => {
   return t.isCallExpression(node.expression) &&
     t.isIdentifier(node.expression.callee) &&
-    node.expression.callee.name === BINARY_ALIAS &&
+    node.expression.callee.name === BINARY_OPERATOR_DEFINITION &&
     node.expression.arguments[0] != null &&
     t.isLiteral(node.expression.arguments[0]) &&
     node.expression.arguments[0].value in BINARY;
 }
 
-const findOverload = (scope, operator, OPS) => {
-  const type = OPS[operator];
+const findOverloadUnary = (scope, operator) => {
+  const type = UNARY[operator];
+
+  while (scope) {
+    if (scope[type]) { return scope[type]; }
+    scope = scope.parent;
+  }
+}
+
+const findOverloadBinary = (scope, operator) => {
+  const type = BINARY[operator];
 
   while (scope) {
     if (scope[type]) { return scope[type]; }
@@ -35,57 +44,56 @@ module.exports = function (_ref) {
   const t = _ref.types;
   return {
     visitor: {
-      ExpressionStatement({ node, scope, replaceWith }) {
-        if (is(t, node, UNARY, UNARY_ALIAS)) {
-          const op = node.expression.arguments[0].value;
-          const opType = UNARY[op];
-          const id = scope.generateUidIdentifier(opType);
+      ExpressionStatement: function ExpressionStatement(path) {
+        var node = path.node;
+        var scope = path.scope;
 
-          scope[opType] = id;
 
-          replaceWith(t.VariableDeclaration("const", [t.VariableDeclarator(id, node.expression.arguments[1])]));
-        } else if (is(t, node, BINARY, BINARY_ALIAS)) {
-          const op = node.expression.arguments[0].value;
-          const opType = BINARY[op];
-          const id = scope.generateUidIdentifier(opType);
+        if (isUnary(t, node)) {
+          var operator = node.expression.arguments[0].value;
+          var operatorType = UNARY[operator];
+          var id = scope.generateUidIdentifier(operatorType);
 
-          scope[opType] = id;
+          scope[operatorType] = id;
 
-          replaceWith(t.VariableDeclaration("const", [t.VariableDeclarator(id, node.expression.arguments[1])]));
-        } else if (is(t, node, LOGICAL, LOGICAL_ALIAS)) {
-          const op = node.expression.arguments[0].value;
-          const opType = LOGICAL[op];
-          const id = scope.generateUidIdentifier(opType);
+          path.replaceWith(t.VariableDeclaration("const", [t.VariableDeclarator(id, node.expression.arguments[1])]));
+        } else if (isBinary(t, node)) {
+          var operator = node.expression.arguments[0].value;
+          var operatorType = BINARY[operator];
+          var id = scope.generateUidIdentifier(operatorType);
 
-          scope[opType] = id;
+          scope[operatorType] = id;
 
-          replaceWith(t.VariableDeclaration("const", [t.VariableDeclarator(id, node.expression.arguments[1])]));
+          path.replaceWith(t.VariableDeclaration("const", [t.VariableDeclarator(id, node.expression.arguments[1])]));
         }
       },
-      UnaryExpression: ({node, scope, replaceWith}) => {
-        const overload = findOverload(scope, node.operator, UNARY);
+      UnaryExpression: (path) => {
+        var node = path.node;
+        var scope = path.scope;
 
-        overload
-          ? replaceWith(t.CallExpression(overload, [node.argument]))
-          : null
+        var overload = findOverloadUnary(scope, node.operator);
+
+        if (!overload) {
+          return;
+        }
+
+        path.replaceWith(t.CallExpression(overload, [node.argument]));
       },
-      // UpdateExpression({node, scope, replaceWith}) {
-        // const overload = findOverload(scope, node.operator, UPDATE);
+      BinaryExpression: function BinaryExpression(path) {
+        var node = path.node;
+        var scope = path.scope;
 
-        // overload
-        // ? replaceWith(t.CallExpression(overload, [node.argument]))
-        // : null
-      // },
-      BinaryExpression: ({node, scope, replaceWith}) => {
-        const overload = findOverlooad(scope, node.operator, BINARY);
+        var overload = findOverloadBinary(scope, node.operator);
 
-        overload
-          ? replaceWith(t.CallExpression(
-            t.CallExpression(overload, [node.left]),
-            [node.right]
-          ))
-          : null
-      },
+        if (!overload) {
+          return;
+        }
+
+        path.replaceWith(t.CallExpression(
+          t.CallExpression(overload, [node.left]),
+          [node.right]
+        ));
+      }
     }
   };
 };

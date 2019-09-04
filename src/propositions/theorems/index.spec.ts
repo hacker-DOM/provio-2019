@@ -22,9 +22,9 @@ describe (`Theorems`, function () {
     it (`verifying proof of ${key}: ${val.name}`, function () {
       const state = T._state (axioms) (inferences)
       val.proof (state)
-      const x = B._var()
-      const p = state.proposition (x)
-      assert.deepEqual (state.proposition (x), val.proposition (x))
+      const x = R.last (state.vars())
+      const p = state.proposition()
+      assert (R.equals (state.proposition()) (val.proposition (x)))
     })
   }) (cache)
   

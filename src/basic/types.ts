@@ -31,8 +31,7 @@ export class _State {
   addVar = () => {
     const x = _var()
     x.id = this.#vars.length
-    R.append (x) (this.#vars)
-    return x
+    return S.pushAndReturn (x) (this.#vars)
   }
 
   /* Predicates */
@@ -54,14 +53,25 @@ export class _State {
 
   axioms = () => this.#axioms
 
-  useAxiom = name => (...args) => this.#addGeneral (this.#axioms[name] (...args))
-  
+  useAxiom = name => (...args) => this.#addGeneral 
+    (S.uncurry (this.#axioms[name]) (args))
+
   /* Inferences */
   #inferences = {}
 
   inferences = () => this.#inferences
 
-  useInference = name => (...args) => this.#addGeneral (this.#inferences[name] (...args))
+  useInference = name => (...args) => this.#addGeneral
+      (S.uncurry (this.#inferences[name]) (args))
+
+  /* Modus Ponens */
+  MP = (pr1_implies_pr2, pr1) => {
+    if (R.equals (pr1) (pr1_implies_pr2.x)) {
+      return this.#addGeneral (pr1_implies_pr2.y)
+    } else {
+      `problem` |> console.log
+    }
+  }
 
   /* Proposition */
   #proposition 
