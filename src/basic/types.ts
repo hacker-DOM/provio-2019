@@ -40,14 +40,14 @@ export class _State {
 
   predicates = args => this.#predicates[args |> BH.serialize]
 
-  #addPr = args => pr => S.appendOrCreate (args |> BH.serialize) (pr) (this.#predicates)
+  #addPr = args => pr => S.pushOrCreateAndReturn (args |> BH.serialize) (pr) (this.#predicates)
 
   /* Generals */
   #generals = []
 
   generals = () => this.#generals
 
-  #addGeneral = pr => R.append (pr) (this.#generals)
+  #addGeneral = pr => S.pushAndReturn (pr) (this.#generals)
 
   /* Axioms */
   #axioms = {}
@@ -68,7 +68,9 @@ export class _State {
 
   proposition = () => this.#proposition
 
-  setProposition = pr => pr in this.#generals ? this.#proposition = pr : console.log(`null`)
+  setProposition = pr => {
+    this.#generals.includes (pr) ? this.#proposition = pr : null
+  }
 }
 
 export const _state = axioms => inferences => new _State(axioms, inferences)

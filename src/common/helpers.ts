@@ -5,8 +5,21 @@ export const debug = item => {
   return item
 }
 
-export const appendOrCreate = prop => el => arr => {
-  arr[prop] = R.append (el) (R.propOr ([]) (R.prop (prop)))
+/**
+ * @description Non-pure
+ * @example 
+ */
+export const pushOrCreateAndReturn = prop => el => arr => {
+  arr[prop] ? arr.push(el) : arr = []
+  return el
+}
+
+/**
+ * @description Non-pure
+ * @example 
+ */
+export const pushAndReturn = el => arr => {
+  arr.push (el)
   return el
 }
 

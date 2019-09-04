@@ -14,8 +14,6 @@ describe (`Theorems`, function () {
     req.keys().forEach(key => cache[key] = req(key));
   }
   importAll(req)
-
-  process.argv |> S.logEach
   
   const axioms = {'H1': A.H1, 'H2': A.H2, 'H3': A.H3}
   const inferences = {'MP': A.MP}
@@ -25,6 +23,7 @@ describe (`Theorems`, function () {
       const state = T._state (axioms) (inferences)
       val.proof (state)
       const x = B._var()
+      const p = state.proposition (x)
       assert.deepEqual (state.proposition (x), val.proposition (x))
     })
   }) (cache)
