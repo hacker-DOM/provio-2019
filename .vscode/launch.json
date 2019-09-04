@@ -12,7 +12,7 @@
       // "program": "${file}",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
-        "run-script", "exec",
+        "run-script", "start:file",
         "--", "${file}"
         "--colors",
         "--nolazy"

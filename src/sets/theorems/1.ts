@@ -1,29 +1,20 @@
-import * as A from '../axioms'
-import * as B from '../../basic/types'
-// There exists a unique set having no elements
-// const S1 =
-// H._existsUnique (x)
-//   (H._isEmpty (x))
+import B from '../../basic'
+import P from '..'
 
-// const P1 = 
-// T._implies
-//   (ZF2)
-//   ()
+bi('>>', P._implies)
 
-// const T1 = T._theorem (S1) (P1)
+const NAME = `x >> x`
 
+const proposition = x => x >> x
 
-// const state = _B._state()
-
-
-
-const proof = () => {
-
+const proof = ({addVar, useAxiom, MP, QED}: T._State) => {
+  const x = addVar()
+  const h1_1 = useAxiom (`H1`) (x, x >> x)
+  const h2_1 = useAxiom (`H2`) (x, x >> x, x)
+  const mp_1 = MP (h2_1, h1_1)
+  const h1_2 = useAxiom (`H1`) (x, x)
+  const mp_2 = MP (mp_1, h1_2)
+  QED()
 }
 
-const Problem = {
-  statement,
-  proof
-}
-
-export default Problem
+export default B._theorem (NAME) (proposition) (proof)

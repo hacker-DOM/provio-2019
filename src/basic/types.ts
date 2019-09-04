@@ -1,5 +1,5 @@
 import * as BH from './helpers'
-import {R,S,util} from '../common'
+import {R,H,util} from '../common'
 
 // Variable
 export class _Var {
@@ -31,7 +31,7 @@ export class _State {
   addVar = () => {
     const x = _var()
     x.id = this.#vars.length
-    return S.pushAndReturn (x) (this.#vars)
+    return H.pushAndReturn (x) (this.#vars)
   }
 
   /* Predicates */
@@ -39,14 +39,14 @@ export class _State {
 
   predicates = args => this.#predicates[args |> BH.serialize]
 
-  #addPr = args => pr => S.pushOrCreateAndReturn (args |> BH.serialize) (pr) (this.#predicates)
+  #addPr = args => pr => H.pushOrCreateAndReturn (args |> BH.serialize) (pr) (this.#predicates)
 
   /* Generals */
   #generals = []
 
   generals = () => this.#generals
 
-  #addGeneral = pr => S.pushAndReturn (pr) (this.#generals)
+  #addGeneral = pr => H.pushAndReturn (pr) (this.#generals)
 
   /* Axioms */
   #axioms = {}
@@ -54,7 +54,7 @@ export class _State {
   axioms = () => this.#axioms
 
   useAxiom = name => (...args) => this.#addGeneral 
-    (S.uncurry (this.#axioms[name]) (args))
+    (H.uncurry (this.#axioms[name]) (args))
 
   /* Inferences */
   #inferences = {}
@@ -62,16 +62,14 @@ export class _State {
   inferences = () => this.#inferences
 
   useInference = name => (...args) => this.#addGeneral
-      (S.uncurry (this.#inferences[name]) (args))
+      (H.uncurry (this.#inferences[name]) (args))
 
   /* Modus Ponens */
   MP = (pr1_implies_pr2, pr1) => {
-    // const a = JSON.stringify (pr1_implies_pr2.x) === JSON.stringify (pr1)
-    // const b = R.equals (pr1_implies_pr2.x) (pr1)
     if (R.equals (pr1_implies_pr2.x) (pr1) && R.equals (pr1_implies_pr2.y.x) (pr1)) {
       return this.#addGeneral (pr1_implies_pr2.y.y)
     } else {
-      `problem` |> console.log
+      throw new Error(`MP not used correctly: ${pr1_implies_pr2}, ${pr1}`)
     }
   }
 
@@ -80,28 +78,7 @@ export class _State {
 
   proposition = () => this.#proposition
 
-  setProposition = pr => {
-    R.includes (pr) (this.#generals) ? this.#proposition = pr : null
-  }
+  QED = () => this.#proposition = R.last (this.#generals)
 }
 
 export const _state = axioms => inferences => new _State(axioms, inferences)
-
-
-    // const s = BH.serialize(args)
-    // const prs = this.#predicates
-    // s in prs ? prs[s].push(pr) : prs[s] = [pr]
-
-  // logPredicates(args) {
-  //   return R.map (R.toString) (this.predicates (args))
-  // }
-
-  // toString() {
-  //   const vars= `${util.inspect(this.#vars)}`
-  //   const prs = R.map (R.map (R.toString)) (this.#predicates)
-  //   return vars + util.inspect(prs)
-  // }
-
-  // log() {
-  //   console.log(this.toString())
-  // }
