@@ -4,6 +4,8 @@ import * as T from '../types'
 
 bi('==', T._implies)
 
+const NAME = `x => x`
+
 const proposition = x => x == x
 
 const proof = (state: T._State) => {
@@ -17,6 +19,5 @@ const proof = (state: T._State) => {
   // state.axioms |> console.log
 }
 
-const name = `x => x`
 
-export default B._theorem (name) (proposition) (proof)
+export default B._theorem (NAME) (proposition) (proof)

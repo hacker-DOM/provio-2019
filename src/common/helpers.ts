@@ -5,6 +5,10 @@ export const debug = item => {
   return item
 }
 
+export const appendOrCreate = prop => el => arr => {
+  arr[prop] = R.append (el) (R.propOr ([]) (R.prop (prop)))
+}
+
 /**
  * @description Like reduce, but you get (acc, val, idx, obj) for every element
  */

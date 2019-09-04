@@ -1,5 +1,5 @@
 import * as BH from './helpers'
-import {R,util} from '../common'
+import {R,S,util} from '../common'
 
 // Variable
 export class _Var {
@@ -25,31 +25,47 @@ export class _State {
 
   #vars = []
 
-  get vars() {
-    return this.#vars
-  }
+  vars = () => this.#vars
 
-  addVar() {
-    // return R.append (el) (this.#vars)
+  addVar = () => {
     const x = _var()
     x.id = this.#vars.length
-    this.#vars.push(x)
+    R.append (x) (this.#vars)
     return x
   }
 
   #predicates = {}
 
-  predicates(args) {
-    const s = BH.serialize(args)
-    return this.#predicates[s]
-  }
+  predicates = args => this.#predicates[args |> BH.serialize]
 
   // add predicate
-  addPr(args, pr) {
-    const s = BH.serialize(args)
-    const prs = this.#predicates
-    s in prs ? prs[s].push(pr) : prs[s] = [pr]
-  }
+  addPr = args => pr => S.appendOrCreate (args |> BH.serialize) (pr) (this.#predicates)
+
+  #axioms = {}
+
+  axioms = () => this.#axioms
+
+  useAxiom = name => (...args) => this.addPr([args[0]], this.#axioms[name] (...args)
+
+  #inferences = []
+
+  inferences = () => this.#inferences
+
+  useInference = name => (...args) => 
+
+  #proposition 
+
+  proposition = () => this.#proposition
+
+  setProposition = pr => pr in this.#predicates ? this.#proposition = pr : null
+}
+
+export const _state = axioms => inferences => new _State(axioms, inferences)
+
+
+    // const s = BH.serialize(args)
+    // const prs = this.#predicates
+    // s in prs ? prs[s].push(pr) : prs[s] = [pr]
 
   // logPredicates(args) {
   //   return R.map (R.toString) (this.predicates (args))
@@ -64,40 +80,3 @@ export class _State {
   // log() {
   //   console.log(this.toString())
   // }
-
-  #axioms = {}
-
-  // addAxiom(axiom) {
-  //   this.#axioms.push (axiom)
-  // }
-
-  get axioms() {
-    return this.#axioms
-  }
-
-  useAxiom(name, ...args) {
-    this.addPr([args[0]], this.#axioms[name] (...args))
-  }
-
-  #inferences = []
-
-  get inferences() {
-    return this.#inferences
-  }
-
-  // addInference(inf) {
-  //   this.#inferences.push (inf)
-  // }
-
-  #proposition 
-
-  get proposition() {
-    return this.#proposition
-  }
-
-  setProposition(pr) {
-    pr in predicates ? this.#proposition = pr : null
-  }
-}
-
-export const _state = axioms => inferences => new _State(axioms, inferences)

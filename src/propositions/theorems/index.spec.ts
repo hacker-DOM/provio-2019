@@ -4,8 +4,8 @@ import * as B from '../../basic/types'
 import * as A from '../axioms'
 import * as T from '../types'
 
-import registerRequireContextHook from 'babel-plugin-require-context-hook/register.js'
-registerRequireContextHook()
+import requireContext from 'babel-plugin-require-context-hook/register.js'
+requireContext()
 
 describe (`Theorems`, function () {
 
@@ -22,7 +22,7 @@ describe (`Theorems`, function () {
   R.mapObjIndexed (({default: val}, key) => {
     it (`verifying proof of ${key}: ${val.name}`, function () {
       const state = T._state (axioms) (inferences)
-      val.proof(state)
+      val.proof (state)
       const x = B._var()
       // assert.deepEqual (state.proposition(x), val.proposition(x))
     })
