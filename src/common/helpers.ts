@@ -10,6 +10,15 @@ export const appendOrCreate = prop => el => arr => {
   return el
 }
 
+/* Doesn't use babel to make it runnable with node */
+export const logEach = arr => {
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+  console.log(`Logging`, Object.keys({arr})[0])
+  R.map (console.log) (arr)
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+  
+}
+
 /**
  * @description Like reduce, but you get (acc, val, idx, obj) for every element
  */

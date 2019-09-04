@@ -7,17 +7,16 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Execute test",
+      "name": "Execute file",
+      // Should not be set, otherwise build would have to be necessary
       // "program": "${file}",
-      "runtimeExecutable": "npx",
+      "runtimeExecutable": "npm",
       "runtimeArgs": [
-        "mocha",
-        "--require", "\"babelRegister.js\"",
-        "${file}",
+        "run-script", "exec",
+        "--", "${file}"
+        "--colors",
+        "--nolazy"
       ],
-      // "outFiles": [
-      //   "${workspaceFolder}/dist/**/*.js"
-      // ],
       "sourceMaps": true,
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart"
@@ -25,20 +24,16 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Execute file",
-      "program": "${file}",
-      // "runtimeExecutable": "npx babel src --extensions \".ts\" --out-dir dist",
-      // "runtimeExecutable": "npx babel src --extensions \".ts\" --out-dir dist",
-      // "preLaunchTask": "build",
-      // "preLaunchTask": "",
+      "name": "Execute test",
+      // Should not be set, otherwise build would have to be necessary
+      // "program": "${file}",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
-        "run-script",
-        ""
-        // "--nolazy"
-      ],
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
+        "run-script", "test:file",
+        "--", "${file}",
+        "--timeout", "999999",
+        "--colors",
+        "--nolazy"
       ],
       "sourceMaps": true,
       "console": "internalConsole",

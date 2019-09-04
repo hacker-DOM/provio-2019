@@ -14,6 +14,8 @@ describe (`Theorems`, function () {
     req.keys().forEach(key => cache[key] = req(key));
   }
   importAll(req)
+
+  process.argv |> S.logEach
   
   const axioms = {'H1': A.H1, 'H2': A.H2, 'H3': A.H3}
   const inferences = {'MP': A.MP}
