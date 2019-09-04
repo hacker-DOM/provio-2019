@@ -22,27 +22,3 @@ export const H3 = x => y => (!y >> !x) >> (x >> y)
 
 // Modus Ponens
 export const MP = x => y => (x && (x >> y)) >> y
-
-const x = B._var()
-const y = B._var()
-const z = B._var()
-
-const h2 = H2 (x) (y) (z)
-
-console.log(h2)
-
-const h3 = H3 (x) (y)
-
-console.log(h3)
-
-export const log = () => {}
-
-export const enhanceState = state => {
-  state.addAxiom(H1)
-  state.addAxiom(H2)
-  state.addAxiom(H3)
-  state.addInference(MP)
-  return state
-}
-
-export const _state = () => enhanceState (B._state())

@@ -30,3 +30,4 @@ export const genCombinations = arr => {
     (genBitString (2) (length) (i))
   ) (R.range (0, 1 << length))
 }
+

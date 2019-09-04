@@ -18,6 +18,11 @@ export class _Theorem {
 export const _theorem = name => proposition => proof => new _Theorem(name, proposition, proof)
 
 export class _State {
+  constructor (axioms, inferences) {
+    this.#axioms = axioms
+    this.#inferences = inferences
+  }
+
   #vars = []
 
   get vars() {
@@ -50,29 +55,45 @@ export class _State {
   //   return R.map (R.toString) (this.predicates (args))
   // }
 
-  toString() {
-    const vars= `${util.inspect(this.#vars)}`
-    const prs = R.map (R.map (R.toString)) (this.#predicates)
-    return vars + util.inspect(prs)
-  }
+  // toString() {
+  //   const vars= `${util.inspect(this.#vars)}`
+  //   const prs = R.map (R.map (R.toString)) (this.#predicates)
+  //   return vars + util.inspect(prs)
+  // }
 
-  log() {
-    console.log(this.toString())
-  }
+  // log() {
+  //   console.log(this.toString())
+  // }
 
   #axioms = []
 
-  addAxiom(axiom) {
-    this.#axioms.push (axiom)
+  // addAxiom(axiom) {
+  //   this.#axioms.push (axiom)
+  // }
+
+  get axioms() {
+    return this.#axioms
   }
 
   #inferences = []
 
-  addInference(inf) {
-    this.#inferences.push (inf)
+  get inferences() {
+    return this.#inferences
   }
 
-  statement 
+  // addInference(inf) {
+  //   this.#inferences.push (inf)
+  // }
+
+  #proposition 
+
+  get proposition() {
+    return this.#proposition
+  }
+
+  setProposition() {
+
+  }
 }
 
-export const _state = () => new _State()
+export const _state = axioms => inferences => new _State(axioms, inferences)
