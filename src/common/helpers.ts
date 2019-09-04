@@ -42,7 +42,13 @@ export const logEach = arr => {
   console.log(`Logging`, Object.keys({arr})[0])
   R.map (console.log) (arr)
   console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-  
+}
+
+export const log = _var => {
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+  console.log(`Logging`, Object.keys({ _var })[0])
+  R.map(console.log)(arr)
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 }
 
 /**

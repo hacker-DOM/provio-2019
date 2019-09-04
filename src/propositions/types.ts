@@ -12,15 +12,15 @@ export const _nand = x => y => new _Nand(x, y)
 
 export const _not = x => _nand (x) (x)
 
-// export const _implies = x => y => _nand (x) (_nand (x) (y))
+export const _implies = x => y => _nand (x) (_nand (x) (y))
 
-export class _Implies {
-  constructor(x, y) {
-    this.x = x
-    this.y = y
-  }
-}
-export const _implies = x => y => new _Implies(x, y)
+// export class _Implies {
+//   constructor(x, y) {
+//     this.x = x
+//     this.y = y
+//   }
+// }
+// export const _implies = x => y => new _Implies(x, y)
 
 // export const _and = x => y => _nand (_nand (x) (y)) (_nand (x) (y))
 export class _And {

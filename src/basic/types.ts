@@ -66,8 +66,10 @@ export class _State {
 
   /* Modus Ponens */
   MP = (pr1_implies_pr2, pr1) => {
-    if (R.equals (pr1) (pr1_implies_pr2.x)) {
-      return this.#addGeneral (pr1_implies_pr2.y)
+    // const a = JSON.stringify (pr1_implies_pr2.x) === JSON.stringify (pr1)
+    // const b = R.equals (pr1_implies_pr2.x) (pr1)
+    if (R.equals (pr1_implies_pr2.x) (pr1) && R.equals (pr1_implies_pr2.y.x) (pr1)) {
+      return this.#addGeneral (pr1_implies_pr2.y.y)
     } else {
       `problem` |> console.log
     }
@@ -79,7 +81,7 @@ export class _State {
   proposition = () => this.#proposition
 
   setProposition = pr => {
-    this.#generals.includes (pr) ? this.#proposition = pr : null
+    R.includes (pr) (this.#generals) ? this.#proposition = pr : null
   }
 }
 

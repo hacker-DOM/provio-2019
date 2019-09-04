@@ -18,13 +18,13 @@ describe (`Theorems`, function () {
   const axioms = {'H1': A.H1, 'H2': A.H2, 'H3': A.H3}
   const inferences = {'MP': A.MP}
 
-  R.mapObjIndexed (({default: val}, key) => {
-    it (`verifying proof of ${key}: ${val.name}`, function () {
+  R.mapObjIndexed (({default: theorem}, key) => {
+    it (`verifying proof of ${key}: ${theorem.name}`, function () {
       const state = T._state (axioms) (inferences)
-      val.proof (state)
+      theorem.proof (state)
       const x = R.last (state.vars())
       const p = state.proposition()
-      assert (R.equals (state.proposition()) (val.proposition (x)))
+      assert (R.equals (state.proposition()) (theorem.proposition (x)))
     })
   }) (cache)
   
