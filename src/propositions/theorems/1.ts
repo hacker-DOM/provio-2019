@@ -18,10 +18,9 @@ const proof = (state: T._State) => {
   const mp_2 = state.useInference (`MP`) (mp_1, h1_2)
   mp_2 |> console.log(`mp_2`, #)
   state.generals() |> console.log(`state.generals`, #)
-  
+
   state.setProposition(mp_2)
   state.proposition() |> console.log(`hi`, #)
 }
-
 
 export default B._theorem (NAME) (proposition) (proof)
