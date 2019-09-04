@@ -8,7 +8,6 @@ import requireContext from 'babel-plugin-require-context-hook/register.js'
 requireContext()
 
 describe (`Theorems`, function () {
-
   const req = require.context(`.`, false, /\d+.ts$/)
   const cache = {}
   const importAll = req => {

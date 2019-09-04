@@ -7,19 +7,42 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Execute test",
+      // "program": "${file}",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "mocha",
+        "--require", "\"babelRegister.js\"",
+        "${file}",
+      ],
+      // "outFiles": [
+      //   "${workspaceFolder}/dist/**/*.js"
+      // ],
+      "sourceMaps": true,
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Execute file",
       "program": "${file}",
       // "runtimeExecutable": "npx babel src --extensions \".ts\" --out-dir dist",
       // "runtimeExecutable": "npx babel src --extensions \".ts\" --out-dir dist",
-      "preLaunchTask": "build",
-      "runtimeExecutable": null,
+      // "preLaunchTask": "build",
+      // "preLaunchTask": "",
+      "runtimeExecutable": "npm",
       "runtimeArgs": [
-        "--nolazy"
+        "run-script",
+        ""
+        // "--nolazy"
       ],
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js"
       ],
-      "sourceMaps": true
+      "sourceMaps": true,
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart"
     }
   ]
 }

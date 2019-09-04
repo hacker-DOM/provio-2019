@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon --exec babel-node src/index.ts --extensions \".ts\"",
+    "start": "babel-node src/index.ts --extensions \".ts\"",
+    "start:watch": "npx nodemon --exec \"npm run start\"",
     "build": "rm -rf dist && npx babel src --extensions \".ts\" --out-dir dist --source-maps",
-    "check-types": "npx tsc --watch",
+    "test": "npx mocha --require \"./babelRegister.js\" \"./src/**/*.spec.ts\"",
+    "test:watch": "npx nodemon --exec \"npm test || true\"",
     "lint": "npx eslint src/ --ext .ts",
-    "test": "npx mocha --require babelRegister.js \"./src/**/*.spec.ts\"",
-    "nodemon-test": "npx nodemon --exec \"npm test || true\"",
-    "jsdoc": "npx jsdoc -c jsdoc.js"
+    "jsdoc": "npx jsdoc -c jsdoc.js",
+    "check-types": "npx tsc --watch"
   },
   "keywords": [],
   "author": "",
