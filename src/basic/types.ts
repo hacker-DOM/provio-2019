@@ -23,6 +23,7 @@ export class _State {
     this.#inferences = inferences
   }
 
+  /* Varaibles */
   #vars = []
 
   vars = () => this.#vars
@@ -34,30 +35,40 @@ export class _State {
     return x
   }
 
+  /* Predicates */
   #predicates = {}
 
   predicates = args => this.#predicates[args |> BH.serialize]
 
-  // add predicate
-  addPr = args => pr => S.appendOrCreate (args |> BH.serialize) (pr) (this.#predicates)
+  #addPr = args => pr => S.appendOrCreate (args |> BH.serialize) (pr) (this.#predicates)
 
+  /* Generals */
+  #generals = []
+
+  generals = () => this.#generals
+
+  #addGeneral = pr => R.append (pr) (this.#generals)
+
+  /* Axioms */
   #axioms = {}
 
   axioms = () => this.#axioms
 
-  useAxiom = name => (...args) => this.addPr([args[0]], this.#axioms[name] (...args)
-
-  #inferences = []
+  useAxiom = name => (...args) => this.#addGeneral (this.#axioms[name] (...args))
+  
+  /* Inferences */
+  #inferences = {}
 
   inferences = () => this.#inferences
 
-  useInference = name => (...args) => 
+  useInference = name => (...args) => this.#addGeneral (this.#inferences[name] (...args))
 
+  /* Proposition */
   #proposition 
 
   proposition = () => this.#proposition
 
-  setProposition = pr => pr in this.#predicates ? this.#proposition = pr : null
+  setProposition = pr => pr in this.#generals ? this.#proposition = pr : console.log(`null`)
 }
 
 export const _state = axioms => inferences => new _State(axioms, inferences)

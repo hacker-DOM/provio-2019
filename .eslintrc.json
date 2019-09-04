@@ -20,6 +20,11 @@
       // "warning",
       // 2
     // ],
+    "max-len": [
+      "error",
+      {"code": 100,
+      "comments": 100}
+    ],
     "indent": "off",
     "linebreak-style": [
       "error",

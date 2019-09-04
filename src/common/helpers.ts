@@ -7,6 +7,7 @@ export const debug = item => {
 
 export const appendOrCreate = prop => el => arr => {
   arr[prop] = R.append (el) (R.propOr ([]) (R.prop (prop)))
+  return el
 }
 
 /**

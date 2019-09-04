@@ -13,6 +13,12 @@ un('!', T._not)
 // H1
 export const H1 = x => y => x >> (y >> x)
 
+H1 |> console.log
+
+H1 (x => x) (x => x) |> console.log
+
+H1 (x => x) (x => x == x) |> console.log
+
 // H2
 export const H2 = x => y => z => (x >> (y >> z)) >> ((x >> y) >> (x >> z))
 

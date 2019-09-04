@@ -24,7 +24,7 @@ describe (`Theorems`, function () {
       const state = T._state (axioms) (inferences)
       val.proof (state)
       const x = B._var()
-      // assert.deepEqual (state.proposition(x), val.proposition(x))
+      assert.deepEqual (state.proposition (x), val.proposition (x))
     })
   }) (cache)
   
