@@ -23,7 +23,6 @@ describe (`Theorems`, function () {
       theorem.proof (state)
       /* Hacky */
       const x = R.last (state.vars())
-      const p = state.proposition()
       assert (R.equals (state.proposition()) (theorem.proposition (x)))
     })
   }) (cache)

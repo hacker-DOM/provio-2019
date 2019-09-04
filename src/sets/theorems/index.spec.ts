@@ -16,16 +16,17 @@ describe (`Theorems`, function () {
   importAll(req)
   
   const {H1, H2, H3} = P
-  const {ZF1, ZF2} = S
-  const axioms = {H1, H2, H3, ZF1, ZF2}
+  const {ZF2} = S
+  const axioms = {H1, H2, H3, ZF2}
 
   R.mapObjIndexed (({default: theorem}, key) => {
     it (`verifying proof of ${key}: ${theorem.name}`, function () {
       const state = P._state (axioms)
       theorem.proof (state)
-      const x = R.last (state.vars())
-      const p = state.proposition()
-      assert (R.equals (state.proposition()) (theorem.proposition (x)))
+      const x = state.vars()[0]
+      /* Hacky.. */
+      const y = R.last (state.vars())
+      assert (R.equals (state.proposition (x)) (theorem.proposition (x)))
     })
   }) (cache)
   

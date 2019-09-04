@@ -1,12 +1,9 @@
-export class _Set {
-}
+import P from '../propositions'
+import Pr from '../predicates'
 
-export const _set = () => new _Set()
-
-// export class _Operation {
-// }
-
-// export const _operation = () => new _Operation()
+un('!', P._not)
+bi('>>', P._implies)
+bi('&', P._and)
 
 export class _In {
   constructor (x: _Set, y: _Set): void {
@@ -17,6 +14,8 @@ export class _In {
 
 export const _in = x => y => new _In(x, y)
 
+bi('in', _in)
+
 export class _Equals {
   constructor (x: _Set, y: _Set): void {
     this.x = x
@@ -25,3 +24,23 @@ export class _Equals {
 }
 
 export const _equals = x => y => new _Equals(x, y)
+
+export const _subset = x => y => z => (z in x) >> (z in y)
+
+bi('<=', _subset)
+
+export const _equals = x => y => (x <= y) & (y <= x)
+
+export const _isEmpty = x => y => !(y in x)
+
+bi('===', _equals)
+
+/**
+ * @description Non-pure
+ * @example 
+ */
+export const _existsUnique = pr => state => {
+  const x = Pr._exists (pr) (state)
+  state.addGeneral(y => (pr (y)) >> (y === x))
+  return x
+}

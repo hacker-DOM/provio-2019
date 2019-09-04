@@ -1,14 +1,20 @@
 import B from '../../basic'
-import P from '..'
+import S from '..'
 
 bi('>>', P._implies)
 
-const NAME = `x >> x`
+const NAME = `There exists unique empty set`
 
-const proposition = x => x >> x
+const proposition = x => S._existsUnique (S._isEmpty (x))
 
-const proof = ({addVar, useAxiom, MP, QED}: T._State) => {
-  const x = addVar()
+const proof = (state: T._State) => {
+  const {addVar, useAxiom, MP, QED} = state
+  const x = useAxiom (`ZF2`) (state)
+  /* x is an empty set */
+  /* y is a contender for empty-set :D */
+  const y = addVar()
+
+  
   const h1_1 = useAxiom (`H1`) (x, x >> x)
   const h2_1 = useAxiom (`H2`) (x, x >> x, x)
   const mp_1 = MP (h2_1, h1_1)
