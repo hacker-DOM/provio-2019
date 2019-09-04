@@ -65,7 +65,7 @@ export class _State {
   //   console.log(this.toString())
   // }
 
-  #axioms = []
+  #axioms = {}
 
   // addAxiom(axiom) {
   //   this.#axioms.push (axiom)
@@ -73,6 +73,10 @@ export class _State {
 
   get axioms() {
     return this.#axioms
+  }
+
+  useAxiom(name, ...args) {
+    this.addPr([args[0]], this.#axioms[name] (...args))
   }
 
   #inferences = []
@@ -91,8 +95,8 @@ export class _State {
     return this.#proposition
   }
 
-  setProposition() {
-
+  setProposition(pr) {
+    pr in predicates ? this.#proposition = pr : null
   }
 }
 
