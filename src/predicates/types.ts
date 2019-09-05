@@ -20,10 +20,10 @@ export const _exists = p => new _Exists (p)
 export class _State extends B._State {
   /* Exist claims */
   addExistsVar = pr => (...args) => {
-    if (R.is(Pr._Exists)(pr)
-      && R.indexOf(pr)(this.#predicates[args |> H.serialize]) >= 0) {
+    if (R.is (Pr._Exists) (pr)
+      && R.indexOf (pr) (this.#predicates[args |> H.serialize]) >= 0) {
       const x = this.addVar()
-      this.addPr([x])(pr.x)
+      this.addPr ([x]) (pr.x)
     } else {
       throw new Error(`addExistsVar not used correctly: ${pr}, ${args}`)
     }

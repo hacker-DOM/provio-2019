@@ -1,8 +1,7 @@
 /* eslint-disable no-undef */
-import {assert,H,R} from '../../common'
+import {requireContext,assert,H,R} from '../../common'
 import P from '..'
 
-import requireContext from 'babel-plugin-require-context-hook/register.js'
 requireContext()
 
 describe (`Theorems`, function () {

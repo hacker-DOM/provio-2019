@@ -4,9 +4,9 @@ import path from 'path'
 import fs from 'fs'
 import util from 'util'
 import assert from 'assert'
-// import propositionalLogic from '../propositional-logic'
+import requireContext from 'babel-plugin-require-context-hook/register.js'
 
 export { 
   R, H, path, fs, util, assert,
-  // propositionalLogic as logic,
+  requireContext,
 }
