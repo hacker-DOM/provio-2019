@@ -6,7 +6,7 @@ import S from '..'
 
 requireContext()
 
-describe (`Theorems`, function () {
+describe (`Sets`, function () {
   const req = require.context(`.`, false, /\d+.ts$/)
   const cache = {}
   const importAll = req => {

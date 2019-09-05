@@ -4,7 +4,7 @@ import P from '..'
 
 requireContext()
 
-describe (`Theorems`, function () {
+describe (`Propositions`, function () {
   const req = require.context(`.`, false, /\d+.ts$/)
   const cache = {}
   const importAll = req => {
