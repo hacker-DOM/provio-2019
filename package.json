@@ -8,7 +8,7 @@
     "start": "npx babel-node src/index.ts --extensions \".ts\"",
     "start:watch": "npx nodemon --exec \"npm run start\"",
     "build": "rm -rf dist && npx babel src --extensions \".ts\" --out-dir dist --source-maps",
-    "test:file": "npx mocha --require \"babelRegister.js\"",
+    "test:file": "export BABEL_DISABLE_CACHE=true && npx mocha --require \"babelRegister.js\"",
     "test": "npx mocha --require \"./babelRegister.js\" \"./src/**/*.spec.ts\"",
     "test:watch": "npx nodemon --exec \"npm test || true\"",
     "lint": "npx eslint src/ --ext .ts",
