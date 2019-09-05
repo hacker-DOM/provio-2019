@@ -1,17 +1,22 @@
 {
   "presets": [
-    ["@babel/env", {
-      "loose": true,
-      "useBuiltIns": "usage",
-    }],
+    "@babel/preset-env",
     "@babel/typescript",
   ],
   "plugins": [
-    // "@babel/proposal-class-properties",
-    // "@babel/proposal-object-rest-spread",
-    // "transform-class-properties",
-    "babel-plugin-operator-overload",
-    ["@babel/plugin-proposal-pipeline-operator", { "proposal": "smart" }],
+    // Our plugins
+    "./plugins/operator-overload",
+    // Plugin by others
+    "require-context-hook",
     // "macros"
-  ]
+    // Plugins by @babel
+    "@babel/proposal-object-rest-spread",
+    ["@babel/plugin-proposal-pipeline-operator", { "proposal": "smart" }],
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-private-methods",
+    "@babel/plugin-proposal-optional-chaining",
+  ],
+  "sourceMaps": "inline",
+  "retainLines": true,
 }
