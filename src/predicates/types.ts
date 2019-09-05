@@ -23,7 +23,8 @@ export class _State extends B._State {
     if (R.is (Pr._Exists) (pr)
       && R.indexOf (pr) (this.#predicates[args |> H.serialize]) >= 0) {
       const x = this.addVar()
-      this.addPr ([x]) (pr.x)
+      const pr = this.addPr ([x]) (pr.x)
+      return [x, pr]
     } else {
       throw new Error(`addExistsVar not used correctly: ${pr}, ${args}`)
     }

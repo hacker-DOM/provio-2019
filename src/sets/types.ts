@@ -13,20 +13,9 @@ export class _In {
 }
 
 export const _in = x => y => new _In(x, y)
-
 bi('in', _in)
 
-export class _Equals {
-  constructor (x: _Set, y: _Set): void {
-    this.x = x
-    this.y = y
-  }
-}
-
-export const _equals = x => y => new _Equals(x, y)
-
 export const _subset = x => y => z => (z in x) >> (z in y)
-
 bi('<=', _subset)
 
 export const _equals = x => y => (x <= y) & (y <= x)
@@ -45,4 +34,6 @@ bi('===', _equals)
   return x
 } */
 
-export const _existsUnique = p => Pr._exists()
+export const _isUnique = x => p => (y => p (y) >> (y === x))
+
+export const _existsUnique = x => p => ((Pr._exists (p)) & _isUnique (x) (p))
