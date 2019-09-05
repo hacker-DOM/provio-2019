@@ -7,6 +7,8 @@
 6. the quantifiers $\forall$ and $\exists$
 7. parens */
 
+class Exists 
+
 /**
  * @description Non-pure
  * @example 
