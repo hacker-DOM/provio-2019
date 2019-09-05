@@ -6,15 +6,28 @@
 5. the propositional connectives $\lnot, \land, \lor, \implies, \equiv$
 6. the quantifiers $\forall$ and $\exists$
 7. parens */
+import {R} from '../common'
+import B from '../basic'
 
-class Exists 
-
-/**
- * @description Non-pure
- * @example 
- */
-export const _exists = pr => state => {
-  const x = state.addVar()
-  state.addPr ([x]) (pr)
-  return x
+export class _Exists {
+  constructor (x) {
+    this.x = x
+  }
 }
+
+export const _exists = p => new _Exists (p)
+
+export class _State extends B._State {
+  /* Exist claims */
+  addExistsVar = pr => (...args) => {
+    if (R.is(Pr._Exists)(pr)
+      && R.indexOf(pr)(this.#predicates[args |> H.serialize]) >= 0) {
+      const x = this.addVar()
+      this.addPr([x])(pr.x)
+    } else {
+      throw new Error(`addExistsVar not used correctly: ${pr}, ${args}`)
+    }
+  }
+}
+
+export const _state = axioms => new _State (axioms)

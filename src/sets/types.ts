@@ -39,8 +39,10 @@ bi('===', _equals)
  * @description Non-pure
  * @example 
  */
-export const _existsUnique = pr => state => {
+/* export const _existsUnique = pr => state => {
   const x = Pr._exists (pr) (state)
   state.addGeneral(y => (pr (y)) >> (y === x))
   return x
-}
+} */
+
+export const _existsUnique = p => Pr._exists()

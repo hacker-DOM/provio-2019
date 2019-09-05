@@ -6,11 +6,21 @@ export const debug = item => {
 }
 
 /**
+ * @description Serialize list of variables by id
+ * @example serialize([x,y,z]) === `0,1,2`
+ */
+export const serialize = R.pipe(
+  R.sortBy (R.prop (`id`)),
+  R.map (v => v.id?.toString() || ``),
+  R.join (`,`))
+
+/**
  * @description Non-pure
  * @example 
  */
-export const pushOrCreateAndReturn = prop => el => arr => {
-  arr[prop] ? arr.push(el) : arr = []
+export const pushOrCreateAndReturn = prop => el => obj => {
+  const arr = obj[prop]
+  arr ? arr.push(el) : obj[prop] = []
   return el
 }
 

@@ -53,7 +53,7 @@ module.exports = function (_ref) {
           : null
       },
       BinaryExpression: ({node, scope, replaceWith}) => {
-        const overload = findOverlooad(scope, node.operator, BINARY);
+        const overload = findOverload(scope, node.operator, BINARY);
 
         overload
           ? replaceWith(t.CallExpression(

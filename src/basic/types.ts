@@ -1,5 +1,4 @@
-import * as BH from './helpers'
-import {R,H,util} from '../common'
+import {R,H} from '../common'
 
 // Variable
 export class _Var {
@@ -18,9 +17,8 @@ export class _Theorem {
 export const _theorem = name => proposition => proof => new _Theorem(name, proposition, proof)
 
 export class _State {
-  constructor (axioms, inferences) {
+  constructor (axioms) {
     this.#axioms = axioms
-    this.#inferences = inferences
   }
 
   /* Varaibles */
@@ -34,42 +32,34 @@ export class _State {
     return H.pushAndReturn (x) (this.#vars)
   }
 
-  /* Predicates */
-  #predicates = {}
-
-  predicates = args => this.#predicates[args |> BH.serialize]
-
-  #addPr = args => pr => H.pushOrCreateAndReturn (args |> BH.serialize) (pr) (this.#predicates)
-
-  /* Generals */
-  #generals = []
-
-  generals = () => this.#generals
-
-  #addGeneral = pr => H.pushAndReturn (pr) (this.#generals)
-
   /* Axioms */
   #axioms = {}
 
   axioms = () => this.#axioms
 
-  useAxiom = name => (...args) => this.#addGeneral 
+  useAxiom = name => (...args) => this.#addPr
+    (args)
     (H.uncurry (this.#axioms[name]) (args))
 
-  /* Inferences */
-  #inferences = {}
+  /* Predicates */
+  #predicates = {}
 
-  inferences = () => this.#inferences
+  predicates = args => this.#predicates[args |> H.serialize]
 
-  useInference = name => (...args) => this.#addGeneral
-      (H.uncurry (this.#inferences[name]) (args))
+  #addPr = args => pr => H.pushOrCreateAndReturn (args |> H.serialize) (pr) (this.#predicates)
 
-  /* Modus Ponens */
-  MP = (pr1_implies_pr2, pr1) => {
-    if (R.equals (pr1_implies_pr2.x) (pr1) && R.equals (pr1_implies_pr2.y.x) (pr1)) {
-      return this.#addGeneral (pr1_implies_pr2.y.y)
+  /**
+   * @description Modus Ponens
+   * @example MP (x >> y, x) === y
+   * @nonPure
+   */
+  MP = (imp, pr1) => {
+    /* This following logic is not so intuitive */
+    /* But that's because _implies actually compiles down to _Nand */
+    if (R.equals (imp.x) (pr1) && R.equals (imp.y.x) (pr1)) {
+      return this.#addPr ([]) (imp.y.y)
     } else {
-      throw new Error(`MP not used correctly: ${pr1_implies_pr2}, ${pr1}`)
+      throw new Error(`MP not used correctly: ${imp}, ${pr1}`)
     }
   }
 
@@ -78,7 +68,7 @@ export class _State {
 
   proposition = () => this.#proposition
 
-  QED = () => this.#proposition = R.last (this.#generals)
+  QED = () => this.#proposition = R.last (this.predicates ([]))
 }
 
-export const _state = axioms => inferences => new _State(axioms, inferences)
+export const _state = axioms => new _State(axioms)

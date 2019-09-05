@@ -13,4 +13,4 @@ bi('in', T._in)
  * @description Non-pure
  * @example 
  */
-export const ZF2 = ex (x => T._isEmpty (x))
+export const ZF2 = () => ex (x => T._isEmpty (x))
