@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import {requireContext,assert,H,R} from '../../common'
+import B from '../../basic'
 import P from '..'
 
 requireContext()
@@ -12,13 +13,12 @@ describe (`Propositions`, function () {
   }
   importAll(req)
   
-  const {H1, H2, H3, MP} = P
+  const {H1, H2, H3} = P
   const axioms = {H1, H2, H3}
-  const inferences = {MP}
 
   R.mapObjIndexed (({default: theorem}, key) => {
     it (`verifying proof of ${key}: ${theorem.name}`, function () {
-      const state = P._state (axioms) (inferences)
+      const state = B._state (axioms)
       theorem.proof (state)
       /* Hacky */
       const x = R.last (state.vars())
