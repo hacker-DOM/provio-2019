@@ -2,7 +2,7 @@ import B from '../../basic'
 import Pr from '../../predicates'
 import S from '..'
 
-bi('>>', P._implies)
+bi (`>>`, P._implies)
 
 const NAME = `There exists unique empty set`
 
@@ -13,7 +13,7 @@ const proof = (state: Pr._State) => {
   const zf2_1 = useAxiom (`ZF2`) ()
   const [x, pr] = addExistsVar (zf2_1) ([])
 
-  QED()
+  QED ()
 }
 
 export default B._theorem (NAME) (proposition) (proof)

@@ -1,9 +1,9 @@
-import {R,H,util} from '../common'
+import {R, H, util} from 'common'
 import * as T from './types'
-import * as B from '../basic/types'
+import * as B from 'basic/types'
 
-bi('>>', T._implies)
-un('!', T._not)
+bi (`>>`, T._implies)
+un (`!`, T._not)
 
 // H1
 export const H1 = x => y => x >> (y >> x)

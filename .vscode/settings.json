@@ -1,0 +1,11 @@
+{
+  // Typescript
+  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.referencesCodeLens.enabled": false,
+  "typescript.validate.enable": false,
+  "typescript.suggest.autoImports": false,
+  // Eslint
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "eslint.run": "onSave",
+}

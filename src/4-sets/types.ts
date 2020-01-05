@@ -1,9 +1,9 @@
-import P from '../propositions'
-import Pr from '../predicates'
+import P from 'propositions'
+import Pr from 'predicates'
 
-un('!', P._not)
-bi('>>', P._implies)
-bi('&', P._and)
+un (`!`, P._not)
+bi (`>>`, P._implies)
+bi (`&`, P._and)
 
 export class _In {
   constructor (x: _Set, y: _Set): void {
@@ -12,21 +12,21 @@ export class _In {
   }
 }
 
-export const _in = x => y => new _In(x, y)
-bi('in', _in)
+export const _in = x => y => new _In (x, y)
+bi (`in`, _in)
 
 export const _subset = x => y => z => (z in x) >> (z in y)
-bi('<=', _subset)
+bi (`<=`, _subset)
 
 export const _equals = x => y => (x <= y) & (y <= x)
 
 export const _isEmpty = x => y => !(y in x)
 
-bi('===', _equals)
+bi (`===`, _equals)
 
 /**
  * @description Non-pure
- * @example 
+ * @example
  */
 /* export const _existsUnique = pr => state => {
   const x = Pr._exists (pr) (state)

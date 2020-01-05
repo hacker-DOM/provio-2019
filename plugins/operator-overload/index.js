@@ -10,7 +10,8 @@ const isUnary = (t, node) => {
     node.expression.callee.name === UNARY_OPERATOR_DEFINITION &&
     node.expression.arguments[0] != null &&
     t.isLiteral(node.expression.arguments[0]) &&
-    node.expression.arguments[0].value in UNARY;
+    node.expression.arguments[0].quasis &&
+    UNARY[node.expression.arguments[0].quasis[0].value.raw] != undefined;
 }
 
 const isBinary = (t, node) => {
@@ -19,8 +20,9 @@ const isBinary = (t, node) => {
     node.expression.callee.name === BINARY_OPERATOR_DEFINITION &&
     node.expression.arguments[0] != null &&
     t.isLiteral(node.expression.arguments[0]) &&
-    node.expression.arguments[0].value in BINARY;
-}
+    node.expression.arguments[0].quasis &&
+    BINARY[node.expression.arguments[0].quasis[0].value.raw] != undefined;
+  }
 
 const findOverloadUnary = (scope, operator) => {
   const type = UNARY[operator];
@@ -48,23 +50,22 @@ module.exports = function (_ref) {
         var node = path.node;
         var scope = path.scope;
 
-
         if (isUnary(t, node)) {
-          var operator = node.expression.arguments[0].value;
+          const operator = node.expression.arguments[0].quasis[0].value.raw
           var operatorType = UNARY[operator];
           var id = scope.generateUidIdentifier(operatorType);
 
           scope[operatorType] = id;
 
-          path.replaceWith(t.VariableDeclaration("const", [t.VariableDeclarator(id, node.expression.arguments[1])]));
+          path.replaceWith(t.VariableDeclaration("var", [t.VariableDeclarator(id, node.expression.arguments[1])]));
         } else if (isBinary(t, node)) {
-          var operator = node.expression.arguments[0].value;
+          const operator = node.expression.arguments[0].quasis[0].value.raw
           var operatorType = BINARY[operator];
           var id = scope.generateUidIdentifier(operatorType);
 
           scope[operatorType] = id;
 
-          path.replaceWith(t.VariableDeclaration("const", [t.VariableDeclarator(id, node.expression.arguments[1])]));
+          path.replaceWith(t.VariableDeclaration("var", [t.VariableDeclarator(id, node.expression.arguments[1])]));
         }
       },
       UnaryExpression: (path) => {

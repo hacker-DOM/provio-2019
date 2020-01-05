@@ -7,15 +7,26 @@
     // Our plugins
     "./plugins/operator-overload",
     // Plugin by others
-    "require-context-hook",
+    ["module-resolver", {
+      "alias": {
+        "common": "./src/0-common",
+        "basic": "./src/1-basic",
+        "propositions": "./src/2-propositions",
+        "predicates": "./src/3-predicates",
+        "sets": "./src/4-sets",
+      },
+    }],
     // "macros"
     // Plugins by @babel
     "@babel/proposal-object-rest-spread",
-    ["@babel/plugin-proposal-pipeline-operator", { "proposal": "smart" }],
+    ["@babel/plugin-proposal-pipeline-operator", {
+      "proposal": "smart"
+    }],
     "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-private-methods",
     "@babel/plugin-proposal-optional-chaining",
+    "require-context-hook",
   ],
   "sourceMaps": "inline",
   "retainLines": true,
