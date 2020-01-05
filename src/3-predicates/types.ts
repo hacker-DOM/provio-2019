@@ -6,7 +6,7 @@
 5. the propositional connectives $\lnot, \land, \lor, \implies, \equiv$
 6. the quantifiers $\forall$ and $\exists$
 7. parens */
-import {R} from 'common'
+import {R, H} from 'common'
 import B from 'basic'
 
 export class _Exists {

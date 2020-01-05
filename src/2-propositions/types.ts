@@ -1,6 +1,3 @@
-import * as B from 'basic/types'
-import * as A from './axioms'
-
 export class _Nand {
   constructor (x: _Set, y: _Set): void {
     this.x = x

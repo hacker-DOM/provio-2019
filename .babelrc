@@ -7,6 +7,7 @@
     // Our plugins
     "./plugins/operator-overload",
     // Plugin by others
+    "require-context-hook",
     ["module-resolver", {
       "alias": {
         "common": "./src/0-common",
@@ -26,7 +27,7 @@
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-private-methods",
     "@babel/plugin-proposal-optional-chaining",
-    "require-context-hook",
+    "@babel/plugin-proposal-do-expressions",
   ],
   "sourceMaps": "inline",
   "retainLines": true,

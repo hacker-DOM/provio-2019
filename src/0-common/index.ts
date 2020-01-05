@@ -6,7 +6,7 @@ import util from 'util'
 import assert from 'assert'
 import requireContext from 'babel-plugin-require-context-hook/register.js'
 
-export { 
+export {
   R, H, path, fs, util, assert,
   requireContext,
 }

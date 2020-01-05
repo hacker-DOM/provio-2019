@@ -1,8 +1,8 @@
-import B from '../../basic'
-import Pr from '../../predicates'
+import B from 'basic'
+import Pr from 'propositions'
 import S from '..'
 
-bi (`>>`, P._implies)
+bi (`>>`, Pr._implies)
 
 const NAME = `There exists unique empty set`
 

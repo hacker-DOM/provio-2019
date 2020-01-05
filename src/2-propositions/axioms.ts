@@ -1,6 +1,4 @@
-import {R, H, util} from 'common'
 import * as T from './types'
-import * as B from 'basic/types'
 
 bi (`>>`, T._implies)
 un (`!`, T._not)
