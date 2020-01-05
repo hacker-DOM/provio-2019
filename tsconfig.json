@@ -7,6 +7,14 @@
       "propositions": ["2-propositions"],
       "predicates": ["3-predicates"],
       "sets": ["4-sets"]
-    }
+    },
+    "noEmit": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
   }
 }
