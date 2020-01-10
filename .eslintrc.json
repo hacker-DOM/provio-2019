@@ -9,10 +9,7 @@
   },
   "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2017,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "babelOptions": {
       // "configFile": "./babel.config.for_web.js"

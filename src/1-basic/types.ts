@@ -1,21 +1,16 @@
 /* eslint-disable max-lines */
 import {R, H} from 'common'
 
-// Variable
-export class _Var {
-}
+/* Variable */
+// export class _Var {}
 
-export const _var = () => new _Var ()
+// export const _var = R.construct (_Var)
 
 export class _Theorem {
-  constructor (name, proposition, proof) {
-    this.name = name
-    this.proposition = proposition
-    this.proof = proof
-  }
+  constructor (public name: string, public proposition, public proof) {}
 }
 
-export const _theorem = name => proposition => proof => new _Theorem (name, proposition, proof)
+export const _theorem = R.construct (_Theorem)
 
 export class _State {
   constructor (axioms) {

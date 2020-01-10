@@ -1,0 +1,63 @@
+/* eslint-disable max-lines */
+import { R, H } from 'common'; // Variable
+
+export class _Var {}
+export const _var = R.construct(_Var);
+export class _Theorem {
+  constructor(public name, public proposition, public proof) {}
+
+}
+export const _theorem = R.construct(_Theorem);
+export class _State {
+  constructor(axioms) {
+    this.axioms = axioms;
+  }
+  /* Variables */
+
+
+  vars = [];
+  addVar = () => {
+    const x = _var();
+
+    x.id = this.vars.length;
+    return H.pushAndReturn(x)(this.vars);
+  };
+  /* Axioms */
+
+  axioms = {};
+  useAxiom = name => (...args) => this.addPr(args)(H.uncurry(this.axioms[name])(args));
+  /* Predicates */
+
+  predicatesProp = {};
+  predicates = args => {
+    var _args;
+
+    return this.predicatesProp[(_args = args, H.serialize(_args))];
+  };
+  addPr = args => pr => {
+    var _args2;
+
+    return H.pushOrCreateAndReturn((_args2 = args, H.serialize(_args2)))(pr)(this.predicatesProp);
+  };
+  /**
+   * @description Modus Ponens
+   * @example MP (x >> y, x) === y
+   * @nonPure
+   */
+
+  MP = (imp, pr1) => {
+    /* This following logic is not so intuitive */
+
+    /* But that's because _implies actually compiles down to _Nand */
+    if (R.equals(imp.x)(pr1) && R.equals(imp.y.x)(pr1)) {
+      return this.addPr([])(imp.y.y);
+    }
+
+    throw new Error(`MP not used correctly: ${imp}, ${pr1}`);
+  };
+  /* Proposition */
+
+  proposition;
+  QED = () => this.proposition = R.last(this.predicates([]));
+}
+export const _state = axioms => new _State(axioms);
