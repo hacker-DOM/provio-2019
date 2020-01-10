@@ -2,7 +2,7 @@ import {R} from 'common'
 import * as T from './types'
 import * as B from 'basic'
 
-type P = B._Proposition;
+type P = B._Proposition
 
 bi (`>>`, T.implies)
 un (`!`, T.not)
@@ -22,9 +22,14 @@ export const H3 = (x: P, y: P) => (
   (!y >> !x) >> (x >> y)
 )
 
+interface Implication {
+  x: P;
+  y: T._Nand;
+}
+
 interface IModusPonens {
-  implication: T._Nand;
-  proposition: B._Proposition;
+  implication: (x: P) => Implication;
+  proposition: (x: P) => P;
 }
 
 export const MP = ({implication: i, proposition: p}: IModusPonens) => {

@@ -1,10 +1,10 @@
 import {R} from 'common'
 import * as B from 'basic'
 
-const {_Proposition} = B
+type P = B._Proposition
 
-export class _Nand extends _Proposition {
-  constructor (public x: _Proposition, public y: _Proposition) {
+export class _Nand extends P {
+  constructor (public x: P, public y: P) {
     super ()
   }
 }

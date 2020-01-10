@@ -16,7 +16,8 @@
     "jsdoc": "npx jsdoc -c jsdoc.js",
     "build:ts": "export BABEL_FOR_TYPESCRIPT=true && rm -rf typescript/src && npx babel src --extensions \".ts\" -d typescript/src --keep-file-extension",
     "check:ts": "tsc -p typescript",
-    "ts": "npm run build:ts && npm run check:ts"
+    "ts": "npm run build:ts && npm run check:ts",
+    "check-all": "npm run lint; npm run test --silent; npm run ts --silent"
   },
   "keywords": [],
   "author": "",
