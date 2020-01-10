@@ -18,9 +18,4 @@
     "allowUnusedLabels": false,
     "esModuleInterop": true,
   },
-  // "include": [
-  //   "typescript/src/untyped.d.ts",
-  //   "typescript/src/0-common",
-  //   "typescript/src/1-basic",
-  // ]
 }

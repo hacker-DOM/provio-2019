@@ -1,5 +1,5 @@
 import {R} from 'common'
-import B from 'basic'
+import * as B from 'basic'
 
 const {_Proposition} = B
 

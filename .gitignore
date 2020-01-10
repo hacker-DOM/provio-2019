@@ -4,3 +4,4 @@ docs
 out
 dist
 yarn-error.log
+typescript/src

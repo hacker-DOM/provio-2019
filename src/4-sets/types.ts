@@ -1,39 +1,37 @@
-import P from 'propositions'
-import Pr from 'predicates'
+import * as B from '1-basic'
+import * as P from 'propositions'
+import * as Pr from 'predicates'
 
-un (`!`, P._not)
-bi (`>>`, P._implies)
-bi (`&`, P._and)
+un (`!`, P.not)
+bi (`>>`, P.implies)
+bi (`&`, P.and)
 
 export class _In {
-  constructor (x: _Set, y: _Set): void {
-    this.x = x
-    this.y = y
-  }
+  constructor (public x: P, public y: P) {}
 }
 
-export const _in = x => y => new _In (x, y)
+export const _in = x => y => new In (x, y)
 bi (`in`, _in)
 
-export const _subset = x => y => z => (z in x) >> (z in y)
-bi (`<=`, _subset)
+export const subset = x => y => z => (z in x) >> (z in y)
+bi (`<=`, subset)
 
-export const _equals = x => y => (x <= y) & (y <= x)
+export const equals = x => y => (x <= y) & (y <= x)
 
-export const _isEmpty = x => y => !(y in x)
+export const isEmpty = x => y => !(y in x)
 
-bi (`===`, _equals)
+bi (`===`, equals)
 
 /**
  * @description Non-pure
  * @example
  */
-/* export const _existsUnique = pr => state => {
-  const x = Pr._exists (pr) (state)
+/* export const existsUnique = pr => state => {
+  const x = Pr.exists (pr) (state)
   state.addGeneral(y => (pr (y)) >> (y === x))
   return x
 } */
 
-export const _isUnique = x => p => (y => p (y) >> (y === x))
+export const isUnique = x => p => (y => p (y) >> (y === x))
 
-export const _existsUnique = x => p => ((Pr._exists (p)) & _isUnique (x) (p))
+export const existsUnique = x => p => ((Pr.exists (p)) & isUnique (x) (p))

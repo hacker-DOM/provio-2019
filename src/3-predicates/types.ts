@@ -7,28 +7,10 @@
 6. the quantifiers $\forall$ and $\exists$
 7. parens */
 import {R, H} from 'common'
-import B from 'basic'
+import * as B from 'basic'
 
 export class _Exists {
-  constructor (x) {
-    this.x = x
-  }
+  constructor (public x: B._Proposition) {}
 }
 
-export const _exists = p => new _Exists (p)
-
-export class _State extends B._State {
-  /* Exist claims */
-  addExistsVar = pr => (...args) => {
-    if (R.is (_Exists) (pr)
-      && R.indexOf (pr) (this.predicates[args |> H.serialize]) >= 0) {
-      const x = this.addVar ()
-      const _pr = this.addPr ([x]) (pr.x)
-      return [x, _pr]
-    }
-    throw new Error (`addExistsVar not used correctly: ${pr}, ${args}`)
-
-  }
-}
-
-export const _state = axioms => new _State (axioms)
+export const _exists = R.construct (_Exists)

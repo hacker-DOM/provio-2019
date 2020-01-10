@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import {R} from 'common'
-import B from 'basic'
+import * as B from 'basic'
 import _1 from './1'
 import assert from 'assert'
 

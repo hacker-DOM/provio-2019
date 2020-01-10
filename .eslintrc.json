@@ -12,7 +12,7 @@
     "ecmaVersion": 2020,
     "sourceType": "module",
     "babelOptions": {
-      "configFile": "./.babelrc.prod.js"
+      "configFile": "./.babelrc.js"
     }
   },
   "rules": {

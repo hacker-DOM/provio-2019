@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import {R, H} from 'common'
+import {R} from 'common'
 
 export class _Proposition {}
 

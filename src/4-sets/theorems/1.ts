@@ -1,12 +1,12 @@
-import B from 'basic'
-import Pr from 'propositions'
-import S from '..'
+import * as B from 'basic'
+import * as Pr from 'propositions'
+import * as S from '..'
 
-bi (`>>`, Pr._implies)
+bi (`>>`, Pr.implies)
 
 const NAME = `There exists unique empty set`
 
-const proposition = x => S._existsUnique (x) (S._isEmpty (x))
+const WTS = x => S._existsUnique (x) (S._isEmpty (x))
 
 const proof = (state: Pr._State) => {
   const {useAxiom, addExistsVar, MP, QED} = state
@@ -16,4 +16,4 @@ const proof = (state: Pr._State) => {
   QED ()
 }
 
-export default B._theorem (NAME) (proposition) (proof)
+export default B.theorem (NAME, WTS, proof)
