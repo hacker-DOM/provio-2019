@@ -11,7 +11,7 @@ const isUnary = (t, node) => {
     node.expression.arguments[0] != null &&
     t.isLiteral(node.expression.arguments[0]) &&
     node.expression.arguments[0].quasis &&
-    UNARY[node.expression.arguments[0].quasis[0].value.raw] != undefined;
+    UNARY[node.expression.arguments[0].quasis[0].value.raw] !== undefined;
 }
 
 const isBinary = (t, node) => {
@@ -21,7 +21,7 @@ const isBinary = (t, node) => {
     node.expression.arguments[0] != null &&
     t.isLiteral(node.expression.arguments[0]) &&
     node.expression.arguments[0].quasis &&
-    BINARY[node.expression.arguments[0].quasis[0].value.raw] != undefined;
+    BINARY[node.expression.arguments[0].quasis[0].value.raw] !== undefined;
   }
 
 const findOverloadUnary = (scope, operator) => {
@@ -57,7 +57,7 @@ module.exports = function (_ref) {
 
           scope[operatorType] = id;
 
-          path.replaceWith(t.VariableDeclaration("var", [t.VariableDeclarator(id, node.expression.arguments[1])]));
+          path.replaceWith(t.VariableDeclaration("const", [t.VariableDeclarator(id, node.expression.arguments[1])]));
         } else if (isBinary(t, node)) {
           const operator = node.expression.arguments[0].quasis[0].value.raw
           var operatorType = BINARY[operator];
@@ -65,7 +65,7 @@ module.exports = function (_ref) {
 
           scope[operatorType] = id;
 
-          path.replaceWith(t.VariableDeclaration("var", [t.VariableDeclarator(id, node.expression.arguments[1])]));
+          path.replaceWith(t.VariableDeclaration("const", [t.VariableDeclarator(id, node.expression.arguments[1])]));
         }
       },
       UnaryExpression: (path) => {

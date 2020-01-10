@@ -1,4 +1,5 @@
 require (`@babel/register`) ({
   extensions: [`.ts`],
-  cache: false
+  cache: false,
+  configFile: `./.babelrc.prod.js`,
 })

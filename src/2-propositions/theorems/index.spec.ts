@@ -1,29 +1,15 @@
 /* eslint-disable no-undef */
-import {requireContext, assert, R} from 'common'
+import {R} from 'common'
 import B from 'basic'
-import P from '..'
+import _1 from './1'
+import assert from 'assert'
 
-requireContext ()
-
-describe (`Propositions`, function () {
-  const req = require.context (`.`, false, /\d+.ts$/)
-  const cache = {}
-  const importAll = req => {
-    req.keys ().forEach (key => cache[key] = req (key))
-  }
-  importAll (req)
-
-  const {H1, H2, H3} = P
-  const axioms = {H1, H2, H3}
-
-  R.mapObjIndexed (({default: theorem}, key) => {
-    it (`verifying proof of ${key}: ${theorem.name}`, function () {
-      const state = B._state (axioms)
-      theorem.proof (state)
-      /* Hacky */
-      const x = R.last (state.vars)
-      assert (R.equals (state.proposition) (theorem.proposition (x)))
-    })
-  }) (cache)
-
+describe (`Propositions`, () => {
+  it (`Verifying ${_1.name}`, () => {
+    const x = B.proposition ()
+    const {WTS} = _1
+    const left = WTS (x)
+    const right = _1.proof () (x)
+    assert (R.equals (left, right))
+  })
 })

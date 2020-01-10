@@ -23,6 +23,22 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Build file",
+      // Should not be set, otherwise build would have to be necessary
+      // "program": "${file}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run-script", "build:file",
+        "--", "${file}",
+        "--colors",
+        "--nolazy"
+      ],
+      "sourceMaps": true,
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart"
+    }, {
+      "type": "node",
+      "request": "launch",
       "name": "Execute test",
       // Should not be set, otherwise build would have to be necessary
       // "program": "${file}",

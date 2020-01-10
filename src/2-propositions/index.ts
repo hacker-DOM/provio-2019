@@ -1,5 +1,5 @@
-import {H} from 'common'
-import * as T from './types'
-import * as A from './axioms'
+// import {H} from 'common'
+export * from './types'
+export * from './axioms'
 
-export default H.myExport (A, T)
+// export default H.safeMerge (A, T)

@@ -12,7 +12,7 @@
     "ecmaVersion": 2020,
     "sourceType": "module",
     "babelOptions": {
-      // "configFile": "./babel.config.for_web.js"
+      "configFile": "./.babelrc.prod.js"
     }
   },
   "rules": {
@@ -74,17 +74,26 @@
     }],
     "no-sync": "error",
     "no-trailing-spaces": "error",
-    "no-undef": "error",
+    /* TODO: Change when babel-eslint
+     * fixes https://github.com/babel/babel-eslint/issues/760
+     */
+    "no-undef": "off",
     "no-unreachable": "error",
     "no-unused-labels": "off",
-    "no-unused-vars": ["error", {
+    /* TODO: Change when babel-eslint
+     * fixes https://github.com/babel/babel-eslint/issues/760
+     */
+    "no-unused-vars": ["off", {
       "ignoreRestSiblings": true
     }],
     "no-use-before-define": ["error", {
       "functions": false,
       "classes": false
     }],
-    "no-useless-constructor": "error",
+    /* TODO: Change when babel-eslint
+     * fixes https://github.com/babel/babel-eslint/issues/760
+     */
+    "no-useless-constructor": "off",
     "no-var": "error",
     "object-curly-spacing": ["error", "never"],
     "object-shorthand": ["error", "always"],
