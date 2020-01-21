@@ -1,13 +1,6 @@
 import {R} from 'common'
-import {Proposition} from './proposition'
+import {nand} from './nand'
 
-export class Nand extends Proposition {
-  constructor (public left, public right) {
-    super ()
-  }
-}
-
-export const nand = R.construct (Nand)
 bi (`^`, nand)
 
 export const not = x => x ^ x
@@ -22,3 +15,5 @@ bi (`&`, and)
 export const or = (x, y) => !((!x) & (!y))
 
 export const equiv = (x, y) => (x >> y) & (y >> x)
+
+export const exists = p => !(x => !p (x))

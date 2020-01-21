@@ -1,5 +1,5 @@
 import {H1, H2, MP} from '../axioms'
-import {implies} from '../connectives'
+import {implies} from '../helpers'
 import {Theorem} from '../theorem'
 
 bi (`>>`, implies)

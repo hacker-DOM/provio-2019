@@ -1,6 +1,6 @@
 import {R} from 'common'
 import {Proposition} from './proposition'
-import {Nand, implies, not} from './connectives'
+import {implies, not} from './helpers'
 
 bi (`>>`, implies)
 un (`!`, not)
