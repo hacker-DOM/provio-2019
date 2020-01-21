@@ -4,11 +4,13 @@ import {Theorem} from '../theorem'
 
 bi (`>>`, implies)
 
-const NAME = `x >> x`
+const
 
-const WTS = (x) => x >> x
+NAME = `x >> x`,
 
-const proof = () => {
+WTS = (x) => x >> x,
+
+proof = () => {
   const h1_1 = (x) => H1 (x, x >> x)
   const h2_1 = (x) => H2 (x, x >> x, x)
   const mp_1 = MP ({implication: h2_1, proposition: h1_1})

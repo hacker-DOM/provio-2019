@@ -5,19 +5,21 @@ import {implies, not} from './helpers'
 bi (`>>`, implies)
 un (`!`, not)
 
-export const H1 = (x, y) => (
+export const
+
+H1 = (x, y) => (
   x >> (y >> x)
-)
+),
 
-export const H2 = (x, y, z) => (
+H2 = (x, y, z) => (
   x >> (y >> z)) >> ((x >> y) >> (x >> z)
-)
+),
 
-export const H3 = (x, y) => (
+H3 = (x, y) => (
   (!y >> !x) >> (x >> y)
-)
+),
 
-export const MP = ({implication: i, proposition: p}) => {
+MP = ({implication: i, proposition: p}) => {
   /* This following logic is not so intuitive */
   /* But that's because _implies is actually a complex _Nand */
   const x = new Proposition ()
