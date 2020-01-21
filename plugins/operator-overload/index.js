@@ -90,10 +90,7 @@ module.exports = function (_ref) {
           return;
         }
 
-        path.replaceWith(t.CallExpression(
-          t.CallExpression(overload, [node.left]),
-          [node.right]
-        ));
+        path.replaceWith(t.CallExpression(overload, [node.left, node.right]))
       }
     }
   };
