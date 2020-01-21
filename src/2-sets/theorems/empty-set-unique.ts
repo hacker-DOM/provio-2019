@@ -15,15 +15,10 @@ proof = () => {
   const
 
   zf2 = ZF2 (),
-  // zf2 = ZF2,
-  // prove
+  // TODO: Prove next line
   _isUnique = isUnique (isEmpty),
   c_1 = () => theorems.conjunction.introduction (zf2, _isUnique),
-  // c_1 = () => theorems.conjunction.introduction (zf2, _isUnique),
-  // c_1 = (x, y) => theorems.conjunction.introduction (zf2 (x, y), _isUnique),
   mp_1 = MP ({implication: c_1, proposition: zf2}),
-  // console.log (`mp_1.toString()`, mp_1.left.toString())
-  // console.log (`_isUnique`, _isUnique.toString())
   mp_2 = MP ({implication: mp_1, proposition: () => _isUnique})
   return mp_2
 },

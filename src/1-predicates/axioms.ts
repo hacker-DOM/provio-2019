@@ -22,11 +22,7 @@ H3 = (x, y) => (
 MP = ({implication: i, proposition: p}) => {
   /* This following logic is not so intuitive */
   /* But that's because `implies` is actually a complex `Nand` */
-  // const x = new Proposition ()
   const xs = R.repeat (new Proposition (), i.length ?? 0)
-  const x = xs[0]
-
-  console.log (`i.length`, i.length)
 
   const left =
     R.is (Function, i)
@@ -37,9 +33,7 @@ MP = ({implication: i, proposition: p}) => {
       ? p (...xs)
       : p
 
-  console.log (`left.left`, left.left)
-
-  if (H.notEquals (left.left) (right) && H.notEquals (left.left) (right)) {
+  if (H.notEquals (left.left) (right)) {
     throw new Error (`
       MP not used correctly 1: 
       left.left: ${H.toString (left.left)}
@@ -49,13 +43,13 @@ MP = ({implication: i, proposition: p}) => {
     `)
   }
 
-  if (H.notEquals (left.right.left) (right) && H.notEquals (left.left) (right)) {
+  if (H.notEquals (left.right.left) (right)) {
     throw new Error (`
       MP not used correctly 2: 
-      left.left: ${left.right.left}
-      right: ${right}
-      i: ${i}
-      p: ${p}
+      left.left: ${H.toString (left.right.left)}
+      right: ${H.toString (right)}
+      i: ${H.toString (i)}
+      p: ${H.toString (p)}
     `)
   }
 

@@ -31,20 +31,14 @@ equals = R.curry ((f, g) => {
 
 notEquals = R.complement (equals),
 
-test = (theorem, _test, _test2) => (
+test = (theorem) => (
   describe (``, () => {
     it (`${theorem.name}`, () => {
       const
 
-      x = new Proposition (),
-      y = new Proposition (),
       {WTS} = theorem,
-      [] = [console.log (`WTS`, WTS)],
-      // wts = WTS (x, y)
-      proof = theorem.proof (),
-      [] = [console.log (`proof`, proof)]
-      // assert (R.equals (wts, proof))
-      assert (equals (WTS, theorem.proof ()))
+      proof = theorem.proof ()
+      assert (equals (WTS, proof))
     })
   })
 )
