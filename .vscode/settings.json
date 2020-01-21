@@ -1,6 +1,6 @@
 {
   // Typescript
-  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.implementationsCodeLens.enabled": false,
   "typescript.referencesCodeLens.enabled": false,
   "typescript.validate.enable": false,
   "typescript.suggest.autoImports": false,
@@ -8,4 +8,7 @@
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
   "eslint.run": "onSave",
+  // Editor
+  "editor.snippetSuggestions": "inline",
+  "editor.suggest.showSnippets": true
 }

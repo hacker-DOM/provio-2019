@@ -16,13 +16,15 @@ proof = () => {
 
   h1_1 = (x) => H1 (x, x >> x),
   h2_1 = (x) => H2 (x, x >> x, x),
-  mp_1 = MP ({implication: h2_1, proposition: h1_1}),
+  // mp_1 = (x) => MP ({implication: h2_1, proposition: h1_1 (x)}),
+  mp_1 = (x) => MP ({implication: h2_1, proposition: h1_1}),
   h1_2 = (x) => H1 (x, x),
-  mp_2 = MP ({implication: mp_1, proposition: h1_2})
+  // mp_2 = (x) => MP ({implication: mp_1, proposition: h1_2 (x)})
+  mp_2 = (x) => MP ({implication: mp_1, proposition: h1_2})
 
   return mp_2
 },
 
 theorem = new Theorem (NAME, WTS, proof)
-
 H.test (theorem)
+export default WTS

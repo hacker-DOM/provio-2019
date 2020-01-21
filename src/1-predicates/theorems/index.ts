@@ -1,7 +1,11 @@
-import _1 from './impl-reflex'
+import implReflex from './impl-reflex'
+import conjIntro from './conj-intro'
 
 export default {
   implication: {
-    reflexivity: _1,
+    reflexivity: implReflex,
   },
+  conjunction: {
+    introduction: conjIntro,
+  }
 }

@@ -1,5 +1,6 @@
 import {R, H, util} from 'common'
-import {exists, isEmpty} from './helpers'
+import {exists} from 'predicates'
+import {isEmpty} from './helpers'
 
 // Null set axiom (There exists an empty set)
 // const ZF2 = x => y => ex (x) (all (y) (!(x in y)))

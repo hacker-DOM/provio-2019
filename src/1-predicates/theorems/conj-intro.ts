@@ -1,10 +1,11 @@
 import {H} from 'common'
 import {H1, H2, MP} from '../axioms'
-import {not, and} from '../helpers'
+import {not, and, implies} from '../helpers'
 import {Theorem} from '../theorem'
 
 un (`!`, not)
 bi (`&`, and)
+bi (`>>`, implies)
 
 const
 
