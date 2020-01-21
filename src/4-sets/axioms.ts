@@ -4,9 +4,9 @@ import * as P from 'propositions'
 import {exists as ex} from 'predicates'
 import * as T from '.'
 
-un (`!`, P.not)
-bi (`in`, T.in)
+// un (`!`, P.not)
+bi (`in`, T._in)
 
 // Null set axiom (There exists an empty set)
 // const ZF2 = x => y => ex (x) (all (y) (!(x in y)))
-export const ZF2 = () => ex (x => T._isEmpty (x))
+export const ZF2 = () => ex (x => T.isEmpty (x))

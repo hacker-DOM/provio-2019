@@ -3,7 +3,7 @@ import * as B from 'basic'
 
 type P = B._Proposition
 
-export class _Nand extends P {
+export class _Nand extends B._Proposition {
   constructor (public x: P, public y: P) {
     super ()
   }

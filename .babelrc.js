@@ -2,6 +2,8 @@ const R = require (`ramda`)
 
 const js = !process.env.BABEL_FOR_TYPESCRIPT
 
+console.log (`For js: ${js}.`)
+
 module.exports = {
   "presets": [
     ... js
@@ -39,5 +41,6 @@ module.exports = {
       : ["@babel/plugin-syntax-typescript"],
   ],
   "retainLines": true,
+  "sourceMaps": true,
 }
 

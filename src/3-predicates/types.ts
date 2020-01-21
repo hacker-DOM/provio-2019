@@ -13,4 +13,4 @@ export class _Exists {
   constructor (public x: B._Proposition) {}
 }
 
-export const _exists = R.construct (_Exists)
+export const exists = R.construct (_Exists)

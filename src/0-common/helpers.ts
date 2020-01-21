@@ -56,7 +56,7 @@ import {R} from './index'
 //  */
 // export const reduceIndexed = R.addIndex (R.reduce)
 
-const safeMergeException = (left: any, right: any): void => {
+const safeMergeException = (left: object, right: object): void => {
   throw new Error (`Name clash: ${left}, ${right}`)
 }
 
