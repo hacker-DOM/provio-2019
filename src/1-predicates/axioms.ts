@@ -1,11 +1,9 @@
 import {R} from 'common'
-import * as T from './types'
-import * as B from 'basic'
+import {Proposition as P} from './proposition'
+import {Nand, implies, not} from './connectives'
 
-type P = B._Proposition
-
-bi (`>>`, T.implies)
-un (`!`, T.not)
+bi (`>>`, implies)
+un (`!`, not)
 
 // H1
 export const H1 = (x: P, y: P) => (
@@ -24,7 +22,7 @@ export const H3 = (x: P, y: P) => (
 
 interface Implication {
   x: P;
-  y: T._Nand;
+  y: Nand;
 }
 
 interface IModusPonens {

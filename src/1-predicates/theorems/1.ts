@@ -1,10 +1,9 @@
-import * as B from 'basic'
-import * as Pr from '..'
 import {H1, H2, MP} from '../axioms'
+import {Proposition as P} from '../proposition'
+import {implies} from '../connectives'
+import {Theorem} from '../theorem'
 
-type P = B._Proposition
-
-bi (`>>`, Pr.implies)
+bi (`>>`, implies)
 
 const NAME = `x >> x`
 
@@ -19,4 +18,4 @@ const proof = () => {
   return mp_2
 }
 
-export default B.theorem (NAME, WTS, proof)
+export default new Theorem (NAME, WTS, proof)

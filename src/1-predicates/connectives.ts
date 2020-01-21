@@ -1,15 +1,12 @@
-import {R} from 'common'
-import * as B from 'basic'
+import {Proposition as P} from './proposition'
 
-type P = B._Proposition
-
-export class _Nand extends B._Proposition {
+export class Nand extends P {
   constructor (public x: P, public y: P) {
     super ()
   }
 }
 
-export const nand = R.construct (_Nand)
+export const nand = R.construct (Nand)
 bi (`^`, nand)
 
 export const not = x => x ^ x
