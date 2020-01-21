@@ -1,4 +1,4 @@
-import {R} from 'common'
+import {R, H} from 'common'
 import {Proposition} from './proposition'
 import {implies, not} from './helpers'
 
@@ -21,11 +21,18 @@ H3 = (x, y) => (
 
 MP = ({implication: i, proposition: p}) => {
   /* This following logic is not so intuitive */
-  /* But that's because _implies is actually a complex _Nand */
-  const x = new Proposition ()
-  if (R.equals ((i (x)).left) (p (x)) && R.equals ((i (x)).right.left) (p (x))) {
-    return (x) => i (x).right.right
+  /* But that's because `implies` is actually a complex `Nand` */
+  // const x = new Proposition ()
+  const xs = R.repeat (new Proposition (), i.length)
+  const x = xs[0]
+
+  if (H.notEquals ((i (...xs)).left) (p (x))) {
+    throw new Error (`MP not used correctly 1: ${i}, ${p}`)
   }
 
-  throw new Error (`MP not used correctly: ${i}, ${p}`)
+  if (H.notEquals ((i (...xs)).right.left) (p (x))) {
+    throw new Error (`MP not used correctly 2: ${i}, ${p}`)
+  }
+
+  return (...ys) => i (...ys).right.right
 }

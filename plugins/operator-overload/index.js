@@ -57,7 +57,30 @@ module.exports = function (_ref) {
 
           scope[operatorType] = id;
 
-          path.replaceWith(t.VariableDeclaration("const", [t.VariableDeclarator(id, node.expression.arguments[1])]));
+          path.replaceWith(
+            t.FunctionDeclaration(
+              id,
+              [
+                t.Identifier (
+                  "x"
+                )
+              ],
+                t.BlockStatement (
+                  [
+                    t.ReturnStatement (
+                      t.CallExpression (
+                        node.expression.arguments[1],
+                        [
+                          t.Identifier (
+                            "x"
+                          )
+                        ]
+                      )
+                    )
+                  ]
+                )
+            )
+          );
         } else if (isBinary(t, node)) {
           const operator = node.expression.arguments[0].quasis[0].value.raw
           var operatorType = BINARY[operator];
@@ -65,7 +88,36 @@ module.exports = function (_ref) {
 
           scope[operatorType] = id;
 
-          path.replaceWith(t.VariableDeclaration("const", [t.VariableDeclarator(id, node.expression.arguments[1])]));
+          path.replaceWith(
+            t.FunctionDeclaration(
+              id,
+              [
+                t.Identifier (
+                  "x"
+                ),
+                t.Identifier (
+                  "y"
+                )
+              ],
+                t.BlockStatement (
+                  [
+                    t.ReturnStatement (
+                      t.CallExpression (
+                        node.expression.arguments[1],
+                        [
+                          t.Identifier (
+                            "x"
+                          ),
+                          t.Identifier (
+                            "y"
+                          )
+                        ]
+                      )
+                    )
+                  ]
+                )
+            )
+          );
         }
       },
       UnaryExpression: (path) => {

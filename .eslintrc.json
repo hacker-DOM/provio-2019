@@ -27,7 +27,7 @@
     "computed-property-spacing": ["error", "never"],
     "cond-assign": 0,
     "dot-notation": "error",
-    "eqeqeq": "error",
+    // "eqeqeq": "error",
     "generator-star-spacing": ["error", "after"],
     "indent": ["error", 2, {
       "SwitchCase": 1,
@@ -110,7 +110,7 @@
       "named": "always",
       "asyncArrow": "always"
     }],
-    "func-call-spacing": ["error", "always", {
+    "func-call-spacing": ["warn", "always", {
       "allowNewlines": true
     }],
     "space-in-parens": ["error", "never"],

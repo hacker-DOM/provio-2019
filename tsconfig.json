@@ -3,10 +3,8 @@
     "baseUrl": "./src",
     "paths": {
       "common": ["0-common"],
-      "basic": ["1-basic"],
-      "propositions": ["2-propositions"],
-      "predicates": ["3-predicates"],
-      "sets": ["4-sets"]
+      "predicates": ["1-predicates"],
+      "sets": ["2-sets"]
     },
     "noEmit": true,
     "strict": true,

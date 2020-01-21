@@ -21,10 +21,8 @@ module.exports = {
     ["module-resolver", {
       "alias": {
         "common": "./src/0-common",
-        "basic": "./src/1-basic",
-        "propositions": "./src/2-propositions",
-        "predicates": "./src/3-predicates",
-        "sets": "./src/4-sets",
+        "predicates": "./src/1-predicates",
+        "sets": "./src/2-sets",
       },
     }],
     "require-context-hook",
@@ -34,6 +32,7 @@ module.exports = {
     }],
     "@babel/plugin-proposal-optional-chaining",
     "@babel/plugin-proposal-do-expressions",
+    "@babel/plugin-proposal-export-default-from",
     ... js
       ? ["@babel/plugin-transform-typescript"]
       // We are *not* using babel-plugin-transform-typescript,
