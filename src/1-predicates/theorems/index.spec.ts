@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
 import {R} from 'common'
-import {Proposition as P} from '../proposition'
+import {Proposition} from '../proposition'
 import _1 from './1'
 import assert from 'assert'
 
 describe (`Propositions`, () => {
   it (`Verifying ${_1.name}`, () => {
-    const x = new P ()
+    const x = new Proposition ()
     const {WTS} = _1
     const left = WTS (x)
     const right = _1.proof () (x)

@@ -1,7 +1,8 @@
-import {Proposition as P} from './proposition'
+import {R} from 'common'
+import {Proposition} from './proposition'
 
-export class Nand extends P {
-  constructor (public x: P, public y: P) {
+export class Nand extends Proposition {
+  constructor (public x, public y) {
     super ()
   }
 }
