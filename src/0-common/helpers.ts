@@ -7,7 +7,7 @@ import assert from 'assert'
 export const
 
 toString = R.cond ([
-  [R.is (Function), x => x.toString ()],
+  [R.is (Function), x => `${x.name}: ${x.toString ()}`],
   [R.is (Object), util.inspect],
   [R.T, R.identity]
 ]),
