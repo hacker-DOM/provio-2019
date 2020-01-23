@@ -10,8 +10,8 @@
     "start:watch": "npx nodemon --exec \"npm run start\"",
     "build": "rm -rf dist && npx babel src --extensions \".ts\" -d dist --source-maps",
     "test:file": "export BABEL_DISABLE_CACHE=true && npx mocha --require \"babelRegister.js\"",
-    "test": "export BABEL_DISABLE_CACHE=true && npx mocha --require \"babelRegister.js\" --require source-map-support \"./src/**/theorems/*.ts\" --includeStack",
-    "test:dist": "npx mocha --require source-map-support \"./dist/**/theorems/*.js\" --includeStack",
+    "test": "export BABEL_DISABLE_CACHE=true && npx mocha --require \"babelRegister.js\" \"./src/**/theorems/*.ts\"",
+    "test:dist": "npx mocha \"./dist/**/theorems/*.js\"",
     "test:watch": "npx nodemon --exec \"npm test || true\"",
     "lint": "npx eslint src/ --ext .ts",
     "jsdoc": "npx jsdoc -c jsdoc.js",
@@ -24,7 +24,8 @@
   "author": "",
   "dependencies": {
     "@babel/polyfill": "^7.8.3",
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "uuid": "^3.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.3",
