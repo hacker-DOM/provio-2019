@@ -8,7 +8,7 @@ bi (`&`, and)
 bi (`>>`, implies)
 un (`!`, not)
 
-export var
+export const
 
 subset = (x, y) => z => (z in x) >> (z in y),
 

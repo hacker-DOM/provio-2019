@@ -6,7 +6,7 @@ un (`!`, not)
 bi (`>>`, implies)
 bi (`&`, and)
 
-export var
+export const
 
 not = x => x ^ x,
 
