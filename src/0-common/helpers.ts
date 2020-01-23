@@ -1,3 +1,4 @@
+/* global describe it */
 import * as util from 'util'
 import {R} from './common'
 import {Proposition} from '../1-predicates/primitives/proposition'

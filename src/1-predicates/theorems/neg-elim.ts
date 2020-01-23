@@ -14,6 +14,7 @@ NAME = `Negation Elimination`,
 
 WTS = (x) => !!x == x,
 
+/* eslint-disable-next-line */
 /* https://math.stackexchange.com/questions/1121542/how-do-i-prove-double-negation-elimination-in-a-propositional-logic-axiom-system */
 proof = () => {}
 
