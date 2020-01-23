@@ -1,5 +1,5 @@
 import {R, H, util} from 'common'
-import {Proposition} from './proposition'
+import {Proposition} from './primitives/proposition'
 import {implies, not} from './helpers'
 
 bi (`>>`, implies)

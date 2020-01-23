@@ -1,6 +1,6 @@
 import * as util from 'util'
 import {R} from './common'
-import {Proposition} from '../1-predicates/proposition'
+import {Proposition} from '../1-predicates/primitives/proposition'
 import assert from 'assert'
 
 export const

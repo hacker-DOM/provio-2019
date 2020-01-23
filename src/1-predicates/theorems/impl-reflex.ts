@@ -2,7 +2,7 @@ import {H} from 'common'
 import {H1, H2} from '../axioms'
 import inferences from '../inferences'
 import {implies} from '../helpers'
-import {Theorem} from '../theorem'
+import {Theorem} from '../primitives/theorem'
 
 bi (`>>`, implies)
 

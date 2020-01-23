@@ -1,5 +1,5 @@
 import {H, R} from 'common'
-import {Proposition} from '../proposition'
+import {Proposition} from '../primitives/proposition'
 
 export default ({implication: i, proposition: p}) => {
   /* This following logic is not so intuitive */

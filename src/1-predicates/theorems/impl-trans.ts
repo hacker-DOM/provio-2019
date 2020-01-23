@@ -1,8 +1,8 @@
 import {R, H} from 'common'
 import {H1, H2, MP} from '../axioms'
 import {and, implies} from '../helpers'
-import {Theorem} from '../theorem'
-import {Proposition} from '../proposition'
+import {Theorem} from '../primitives/theorem'
+import {Proposition} from '../primitives/proposition'
 import lemma from './conj-intro'
 
 bi (`>>`, implies)

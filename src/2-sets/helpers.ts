@@ -1,5 +1,5 @@
 import {and, exists, implies, not} from 'predicates'
-import {_in} from './in'
+import {_in} from './primitives/in'
 
 bi (`in`, _in)
 bi (`<=`, subset)
