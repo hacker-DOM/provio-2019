@@ -73,28 +73,26 @@
       "allow": ["done"]
     }],
     "no-sync": "error",
-    "no-trailing-spaces": "error",
-    /* TODO: Change when babel-eslint
-     * fixes https://github.com/babel/babel-eslint/issues/760
-     */
-    "no-undef": "off",
+    "no-trailing-spaces": "warn",
+    "no-undef": "error",
     "no-unreachable": "error",
-    "no-unused-labels": "off",
+    "no-unused-labels": "error",
     /* TODO: Change when babel-eslint
      * fixes https://github.com/babel/babel-eslint/issues/760
      */
     "no-unused-vars": ["off", {
       "ignoreRestSiblings": true
     }],
-    // "no-use-before-define": ["error", {
-    //   "functions": false,
-    //   "classes": false
-    // }],
+    /* Gives linting error on operator overloading */
+    "no-use-before-define": ["off", {
+      "functions": false,
+      "classes": false
+    }],
     /* TODO: Change when babel-eslint
      * fixes https://github.com/babel/babel-eslint/issues/760
      */
     "no-useless-constructor": "off",
-    // "no-var": "error",
+    "no-var": "error",
     "object-curly-spacing": ["error", "never"],
     "object-shorthand": ["error", "always"],
     "prefer-spread": "error",
