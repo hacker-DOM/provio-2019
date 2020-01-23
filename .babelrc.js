@@ -30,7 +30,6 @@ module.exports = {
     ["@babel/plugin-proposal-pipeline-operator", {
       "proposal": "smart"
     }],
-    "@babel/plugin-proposal-optional-chaining",
     "@babel/plugin-proposal-do-expressions",
     "@babel/plugin-proposal-export-default-from",
     ... js
