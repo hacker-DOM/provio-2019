@@ -20,18 +20,19 @@ proof = () => {
   // TODO: Prove next line
   _isUnique = isUnique (isEmpty),
   // _isUnique = (x, y) => ((isEmpty (x) & isEmpty (y)) >> (x === y))
-  c_1 = () => theorems.conjunction.introduction (zf2, _isUnique),
+  c_1 = inferences.conjunction.introduction (zf2, _isUnique)
+  return c_1
   // c_1 = () => x >> (y >> (x & y))
   // c_1 = () => (zf2) >> (_isUnique >> (zf2 & _isUnique))
-  mp_1 = () => inferences.ModusPonens ({implication: c_1, proposition: zf2}),
+  // mp_1 = () => inferences.ModusPonens ({implication: c_1, proposition: zf2}),
   /*
     mp_1 = {
       left:
       right:
     }
   */
-  mp_2 = inferences.ModusPonens ({implication: mp_1, proposition: () => _isUnique})
-  return mp_2
+  // mp_2 = inferences.ModusPonens ({implication: mp_1, proposition: () => _isUnique})
+  // return mp_2
 },
 
 theorem = new Theorem (NAME, WTS, proof)
