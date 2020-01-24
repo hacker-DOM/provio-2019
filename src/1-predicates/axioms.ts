@@ -1,10 +1,11 @@
 import * as R from 'ramda'
 import H from 'common'
-import {Proposition} from './primitives'
-import {implies, not} from './helpers'
+import {Proposition, bottom} from './primitives'
+import {implies, not, and} from './helpers'
 
 bi (`>>`, implies)
 un (`!`, not)
+bi (`&`, and)
 
 export const
 
@@ -18,4 +19,11 @@ H2 = (x, y, z) => (
 
 H3 = (x, y) => (
   (!y >> !x) >> (x >> y)
-)
+),
+
+bottomAxioms = {
+  // (x & !x) -> bottom
+  definition: (x) => (x & !x) >> bottom,
+  // (!x -> bottom) -> x
+  proofByContradiction: (x) => (!x >> bottom) >> x
+}
