@@ -1,6 +1,6 @@
 import H from 'common'
 import {ZF2} from '../axioms'
-import {Theorem, implies, theorems, inferences} from 'predicates'
+import {Theorem, implies, inferences} from 'predicates'
 import {existsUnique, isUnique, isEmpty} from '../helpers'
 
 bi (`>>`, implies)

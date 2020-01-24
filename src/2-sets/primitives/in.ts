@@ -1,4 +1,5 @@
 export class In {
+  /* eslint-disable-next-line */
   constructor (public left, public right) {}
 }
 

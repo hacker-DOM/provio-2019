@@ -1,6 +1,4 @@
-import * as R from 'ramda'
-import H from 'common'
-import {Proposition, bottom} from './primitives'
+import {bottom} from './primitives'
 import {implies, not, and} from './helpers'
 
 bi (`>>`, implies)

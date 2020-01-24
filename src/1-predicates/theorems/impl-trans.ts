@@ -1,9 +1,6 @@
-import * as R from 'ramda'
-import H from 'common'
-import {H1, H2, MP} from '../axioms'
 import {and, implies} from '../helpers'
-import {Theorem, Proposition} from '../primitives'
-import lemma from './conj-intro'
+import {Theorem} from '../primitives'
+// import lemma from './conj-intro'
 
 bi (`>>`, implies)
 bi (`&`, and)
@@ -17,6 +14,7 @@ WTS = (x, y, z) => ((x >> y) & (y >> z)) >> (x >> z),
 /* https://www.wikiwand.com/en/Hypothetical_syllogism#/Proof */
 proof = () => {}
 
+/* eslint-disable-next-line */
 const theorem = new Theorem (NAME, WTS, proof)
 // H.test (theorem)
 export default WTS

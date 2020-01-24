@@ -1,4 +1,3 @@
-/* global describe it */
 import * as R from 'ramda'
 import * as util from 'util'
 import assert from 'assert'

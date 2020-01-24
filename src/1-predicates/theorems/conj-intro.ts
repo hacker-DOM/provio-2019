@@ -1,5 +1,3 @@
-import H from 'common'
-import {H1, H2, MP} from '../axioms'
 import {not, and, implies} from '../helpers'
 import {Theorem} from '../primitives'
 
@@ -15,6 +13,7 @@ WTS = (x, y) => x >> (y >> (x & y)),
 
 proof = () => {}
 
+/* eslint-disable-next-line */
 const theorem = new Theorem (NAME, WTS, proof)
 // H.test (theorem)
 export default WTS

@@ -1,7 +1,7 @@
 import * as R from 'ramda'
-import {Proposition} from './proposition'
 
 export class Nand {
+  /* eslint-disable-next-line */
   constructor (public left, public right) {}
 }
 
