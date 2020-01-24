@@ -1,5 +1,5 @@
 import * as R from 'ramda'
-import {nand} from './primitives/nand'
+import {nand} from './primitives'
 
 bi (`^`, nand)
 un (`!`, not)

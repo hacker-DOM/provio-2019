@@ -2,8 +2,7 @@ import * as R from 'ramda'
 import H from 'common'
 import {H1, H2, MP} from '../axioms'
 import {and, implies} from '../helpers'
-import {Theorem} from '../primitives/theorem'
-import {Proposition} from '../primitives/proposition'
+import {Theorem, Proposition} from '../primitives'
 import lemma from './conj-intro'
 
 bi (`>>`, implies)

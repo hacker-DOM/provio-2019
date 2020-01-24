@@ -1,5 +1,4 @@
-export * from './primitives/theorem'
-export * from './primitives/proposition'
+export * from './primitives'
 export * from './axioms'
 export * from './helpers'
 import theorems from './theorems'
