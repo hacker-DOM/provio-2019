@@ -1,8 +1,8 @@
 /* global describe it */
+import * as R from 'ramda'
 import * as util from 'util'
-import {R} from './common'
-import {Proposition} from '../1-predicates/primitives/proposition'
 import assert from 'assert'
+import {Proposition} from '../1-predicates/primitives/proposition'
 
 export const
 
@@ -32,14 +32,11 @@ equals = R.curry ((f, g) => {
 
 notEquals = R.complement (equals),
 
-test = (theorem) => (
-  describe (``, () => {
-    it (`${theorem.name}`, () => {
-      const
+test = (theorem) => {
+  console.info (`${theorem.name}`)
+  const
 
-      {WTS} = theorem,
-      proof = theorem.proof ()
-      assert (equals (WTS, proof))
-    })
-  })
-)
+  {WTS} = theorem,
+  proof = theorem.proof ()
+  assert (equals (WTS, proof))
+}

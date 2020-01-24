@@ -1,4 +1,4 @@
-import {R} from 'common'
+import * as R from 'ramda'
 import {nand} from './primitives/nand'
 
 bi (`^`, nand)

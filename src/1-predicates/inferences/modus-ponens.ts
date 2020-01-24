@@ -1,4 +1,5 @@
-import {H, R} from 'common'
+import * as R from 'ramda'
+import H from 'common'
 import {Proposition} from '../primitives/proposition'
 
 export default ({implication: i, proposition: p}) => {

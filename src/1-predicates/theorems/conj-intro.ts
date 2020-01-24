@@ -1,4 +1,4 @@
-import {H} from 'common'
+import H from 'common'
 import {H1, H2, MP} from '../axioms'
 import {not, and, implies} from '../helpers'
 import {Theorem} from '../primitives/theorem'

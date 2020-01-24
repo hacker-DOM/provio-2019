@@ -19,7 +19,7 @@
     "array-bracket-spacing": ["error", "never"],
     "array-callback-return": 2,
     "arrow-spacing": "error",
-    "brace-style": ["error", "stroustrup"],
+    "brace-style": ["error", "1tbs"],
     "comma-spacing": ["error", {
       "before": false,
       "after": true

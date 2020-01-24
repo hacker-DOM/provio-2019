@@ -1,4 +1,5 @@
-import {R, H, util} from 'common'
+import * as R from 'ramda'
+import H from 'common'
 import {Proposition} from './primitives/proposition'
 import {implies, not} from './helpers'
 

@@ -1,4 +1,4 @@
-import {R} from 'common'
+import * as R from 'ramda'
 import {Proposition} from './proposition'
 
 export class Nand {

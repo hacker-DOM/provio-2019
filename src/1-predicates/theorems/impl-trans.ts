@@ -1,4 +1,5 @@
-import {R, H} from 'common'
+import * as R from 'ramda'
+import H from 'common'
 import {H1, H2, MP} from '../axioms'
 import {and, implies} from '../helpers'
 import {Theorem} from '../primitives/theorem'
