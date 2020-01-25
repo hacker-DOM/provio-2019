@@ -1,7 +1,7 @@
 import * as R from 'ramda'
 import * as util from 'util'
 import assert from 'assert'
-import {Proposition} from '../1-predicates'
+import {Proposition} from '../../1-predicates'
 
 export const
 

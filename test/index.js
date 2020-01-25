@@ -1,4 +1,6 @@
+/* Owner: dom */
 const R = require (`ramda`)
+const argv = require (`yargs`).argv
 const glob = require (`glob`)
 const StackUtils = require (`stack-utils`)
 
@@ -8,16 +10,22 @@ const stack = new StackUtils ({
   ignoredPackages: [`ramda`]
 })
 
-glob (`build/**/theorems/*.js`, (er, files) => {
+const test = (er, files) => {
   try {
     R.map (f => require (`../${f}`)) (files)
   } catch (e) {
     console.error (`
       Message:
       ${e.message}
-
+    
       Stack:
       ${stack.clean (e.stack, 5)}
-    `)
+  `)
   }
-})
+}
+
+glob (`build/**/theorems/*.js`, test)
+
+if (argv.all) {
+  glob (`build/**/*.spec.js`, test)
+}
