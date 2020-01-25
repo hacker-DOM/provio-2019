@@ -1,4 +1,3 @@
-import {bottom} from './primitives'
 import {implies, not, and} from './helpers'
 
 bi (`>>`, implies)
@@ -17,11 +16,4 @@ H2 = (x, y, z) => (
 
 H3 = (x, y) => (
   (!y >> !x) >> (x >> y)
-),
-
-bottomAxioms = {
-  // (x & !x) -> bottom
-  definition: (x) => (x & !x) >> bottom,
-  // (!x -> bottom) -> x
-  proofByContradiction: (x) => (!x >> bottom) >> x
-}
+)
