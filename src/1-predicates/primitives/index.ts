@@ -1,3 +1,3 @@
 export * from './nand'
-export * from './proposition'
+export * from './prop-atom'
 export * from './theorem'
