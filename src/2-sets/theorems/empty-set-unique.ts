@@ -1,3 +1,4 @@
+/* eslint-disable */
 import H from 'common'
 import {ZF2} from '../axioms'
 import {Theorem, implies, inferences} from 'predicates'
@@ -33,7 +34,7 @@ lemma = () => {
   // ...
   return isUnique (isEmpty)
 },
-
+/* eslint-disable-next-line no-unused-vars */
 proof = () => {
   const
 
@@ -43,8 +44,8 @@ proof = () => {
   isUnique = lemma (),
   c_1 = inferences.conjunction.introduction (zf2, isUnique)
   return c_1
-},
+}
 
-theorem = new Theorem (NAME, WTS, proof)
-H.test (theorem)
+// theorem = new Theorem (NAME, WTS, proof)
+// H.test (theorem)
 export default WTS

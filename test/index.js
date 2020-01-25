@@ -7,7 +7,10 @@ const StackUtils = require (`stack-utils`)
 const stack = new StackUtils ({
   cwd: process.cwd (),
   internals: StackUtils.nodeInternals (),
-  ignoredPackages: [`ramda`]
+  ignoredPackages: [`ramda`],
+  wrapCallSite (...args) {
+    return 5
+  },
 })
 
 const test = (er, files) => {
@@ -15,16 +18,16 @@ const test = (er, files) => {
     R.map (f => require (`../${f}`)) (files)
   } catch (e) {
     console.error (`
-      Message:
-      ${e.message}
+    Message:
+    ${e.message}
     
-      Stack:
-      ${stack.clean (e.stack, 5)}
+    Stack:
+    ${stack.clean (e.stack)}
   `)
   }
 }
 
-glob (`build/**/theorems/*.js`, test)
+glob (`build/**/theorems/*.spec.js`, test)
 
 if (argv.all) {
   glob (`build/**/*.spec.js`, test)

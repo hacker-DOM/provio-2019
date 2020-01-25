@@ -1,11 +1,11 @@
 import * as R from 'ramda'
 import H from 'common'
-import {Proposition} from '../primitives'
+import {PropositionalAtom} from '../primitives'
 
 export default ({implication: i, proposition: p}) => {
   /* This following logic is not so intuitive */
   /* But that's because `implies` is actually a complex `Nand` */
-  const xs = R.repeat (new Proposition (), i.length ?? 0)
+  const xs = R.repeat (new PropositionalAtom (), i.length ?? 0)
 
   const left =
     R.is (Function, i)

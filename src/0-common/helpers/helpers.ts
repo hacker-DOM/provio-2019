@@ -1,7 +1,7 @@
 import * as R from 'ramda'
 import * as util from 'util'
 import assert from 'assert'
-import {Proposition} from '../../1-predicates'
+import {PropositionalAtom} from '../../1-predicates'
 
 export const
 
@@ -18,11 +18,11 @@ equals = R.curry ((f, g) => {
 
   if (R.is (Function, f) && R.is (Function, g)) {
     const minLength = Math.min (f.length, g.length)
-    const xs = R.repeat (new Proposition) (minLength)
+    const xs = R.repeat (new PropositionalAtom) (minLength)
     return equals (f (...xs)) (g (...xs))
   }
 
-  if (R.is (Proposition, f) && R.is (Proposition, g)) {
+  if (R.is (PropositionalAtom, f) && R.is (PropositionalAtom, g)) {
     return true
   }
 
