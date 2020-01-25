@@ -1,2 +1,2 @@
 export * from './helpers'
-export * from './is-instance'
+export * from './is_instance'
