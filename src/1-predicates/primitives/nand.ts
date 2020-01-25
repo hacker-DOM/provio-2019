@@ -1,8 +1,10 @@
 import * as R from 'ramda'
 
 export class Nand {
-  /* eslint-disable-next-line */
-  constructor (public left, public right) {}
+  constructor (left, right) {
+    this.left = left
+    this.right = right
+  }
 }
 
 export const nand = R.construct (Nand)

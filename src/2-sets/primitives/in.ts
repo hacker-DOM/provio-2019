@@ -1,6 +1,8 @@
 export class In {
-  /* eslint-disable-next-line */
-  constructor (public left, public right) {}
+  constructor (left, right) {
+    this.left = left
+    this.right = right
+  }
 }
 
 export const _in = (x, y) => new In (x, y)

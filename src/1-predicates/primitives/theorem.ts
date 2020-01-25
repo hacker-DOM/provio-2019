@@ -1,9 +1,7 @@
 export class Theorem {
-  constructor (
-    /* eslint-disable no-unused-vars */
-    public name,
-    public WTS,
-    public proof,
-    /* eslint-enable no-unused-vars */
-  ) {}
+  constructor (name, WTS, proof) {
+    this.name = name
+    this.WTS = WTS
+    this.proof = proof
+  }
 }
