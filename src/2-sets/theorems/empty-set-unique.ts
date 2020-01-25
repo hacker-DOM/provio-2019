@@ -13,6 +13,7 @@ NAME = `Empty Set Uniqueness`,
 WTS = existsUnique (isEmpty),
 
 lemma = () => {
+  /* Rought sketch bc it reality these are all implications */
   // const x = set()
   // const y = set()
   // const t_1 = (z => !(z in x)) & (z => !(z in y))
@@ -31,7 +32,6 @@ lemma = () => {
   // const p_5 = equals.elimination (p_4)
   // const p_6 = universal.generalization (x, p_5)
   // const p_7 = universal.generalization (y, p_6)
-  // ...
   return isUnique (isEmpty)
 },
 /* eslint-disable-next-line no-unused-vars */
