@@ -13,14 +13,14 @@ NAME = `Implication Reflexivity`,
 
 WTS = (x) => x >> x,
 
-proof = (arg) => {
+proof = (atom) => {
   const
 
-  h1_1 = H1 (arg, arg >> arg),
-  h2_1 = H2 (arg, arg >> arg, arg),
+  h1_1 = (new H1 (atom, atom >> atom)).eval (),
+  h2_1 = (new H2 (atom, atom >> atom, atom)).eval (),
   /* eslint-disable-next-line */
   mp_1 = ModusPonens ({implication: h2_1, proposition: h1_1}),
-  h1_2 = H1 (arg, arg),
+  h1_2 = (new H1 (atom, atom)).eval (),
   /* eslint-disable-next-line */
   mp_2 = ModusPonens ({implication: mp_1, proposition: h1_2})
 

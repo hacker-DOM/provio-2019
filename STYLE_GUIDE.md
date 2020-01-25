@@ -1,1 +1,2 @@
-- binary classes: left, right
+- axiom classes: a, b, c, ...
+- 

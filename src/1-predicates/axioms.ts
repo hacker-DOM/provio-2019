@@ -4,10 +4,10 @@ bi (`>>`, implies)
 un (`!`, not)
 bi (`&`, and)
 
-export class H1_ {
-  constructor (left, right) {
-    this.left = left
-    this.right = right
+export class H1 {
+  constructor (a, b) {
+    this.a = a
+    this.b = b
   }
 
   static evalAny = (x, y) => (
@@ -15,22 +15,37 @@ export class H1_ {
   )
 
   eval () {
-    return H1_.evalAny (this.left, this.right)
+    return H1.evalAny (this.a, this.b)
   }
-  //   (left = this.left, right = this.right) {
-  //   const {left, right} = this
-  //   return left >> (right >> left)
-  // }
 }
 
-export const H1 = (x, y) => (
-  x >> (y >> x)
-)
+export class H2 {
+  constructor (a, b, c) {
+    this.a = a
+    this.b = b
+    this.c = c
+  }
 
-export const H2 = (x, y, z) => (
-  (x >> (y >> z)) >> ((x >> y) >> (x >> z))
-),
+  static evalAny = (x, y, z) => (
+    (x >> (y >> z)) >> ((x >> y) >> (x >> z))
+  )
 
-H3 = (x, y) => (
-  (!y >> !x) >> (x >> y)
-)
+  eval () {
+    return H2.evalAny (this.a, this.b, this.c)
+  }
+}
+
+export class H3 {
+  constructor (a, b) {
+    this.a = a
+    this.b = b
+  }
+
+  static evalAny = (x, y) => (
+    (!y >> !x) >> (x >> y)
+  )
+
+  eval () {
+    return H3.evalAny (this.a, this.b)
+  }
+}
