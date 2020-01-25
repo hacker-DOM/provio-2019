@@ -1,1 +1,4 @@
-- [ ] Prove empty set unique
+- [ ] ? Refactor ForAll & helper fns into classes
+- [ ] eval/evalAll...
+- [ ] Refactor empty set unique lemma proof implications
+- [ ] Finish
