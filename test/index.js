@@ -7,10 +7,7 @@ const StackUtils = require (`stack-utils`)
 const stack = new StackUtils ({
   cwd: process.cwd (),
   internals: StackUtils.nodeInternals (),
-  ignoredPackages: [`ramda`],
-  wrapCallSite (...args) {
-    return 5
-  },
+  ignoredPackages: [`ramda`]
 })
 
 const test = (er, files) => {
